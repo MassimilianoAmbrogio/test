@@ -1,0 +1,63 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* USERS */
+.text-right {
+    white-space: nowrap
+}
+
+/* LOGIN */
+.form-login {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.login-container {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 30%;
+}
+
+.login-form {
+    padding: 6%;
+    background:#282726;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form h3 {
+    text-align: center;
+    margin-bottom: 12%;
+    color:#fff;
+}
+
+.btnSubmit {
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+
+.btnForgotPwd {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btnForgotPwd:hover {
+    text-decoration:none;
+    color:#fff;
+}
+
+/* MENU LIST */
+.list-group {
+    width: 220px;
+    margin-left: 20px;
+}
+
