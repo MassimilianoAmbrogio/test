@@ -69,7 +69,7 @@ class ArrayController extends Controller
         $element2 = count($array3);
         print $element2."<br>";
         //eliminare un elemento dall'array (array Paperino)
-        unset($array3[2]);
+        unset($array3[1]);
         print_r($array3)."<br>";
         //contare gli elementi dell'array
         $element3 = count($array3);
@@ -81,13 +81,13 @@ class ArrayController extends Controller
         $element4 = count($array3);
         print $element4."<br>";
         //aggiungere un attributo dall'array Topolino (eta)
-        $array3[] = ["nome" => "Topolino", "cognome" => "Paperone", "indirizzo" => "via Caboto 60", "eta" => "22"];
+            $array3[2]["eta"] = "22";
         print_r($array3)."<br>";
         //contare gli elementi dell'array
         $element5 = count($array3);
         print $element5."<br>";
-        //contare gli elementi dall'array Topolino
-        $element6 = count($array3[3]);
+        //contare gli elementi dell'array Topolino
+        $element6 = count($array3[2]);
         print $element6."<br>";
     }
 }
