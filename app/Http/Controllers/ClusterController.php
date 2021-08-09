@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Arrays;
 use App\Accommodation;
 use App\Cluster;
 use App\Http\Requests\ClusterStoreRequest;
@@ -13,9 +14,11 @@ class ClusterController extends Controller
 {
     public function index()
     {
+        $arrays = Arrays::all();
         $clusters = Cluster::all();
         return view('clusters', [
             'clusters' => $clusters,
+            'arrays' => $arrays,
         ]);
     }
 
@@ -42,6 +45,7 @@ class ClusterController extends Controller
         $data["slug"] = str_slug($data["name"]);
 
         try {
+            Arrays::create($data);
             Cluster::create($data);
         } catch (\Exception $e) {
             return redirect()->route('clusters')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());

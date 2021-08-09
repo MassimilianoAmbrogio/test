@@ -63,8 +63,8 @@ class ArrayController extends Controller
         //contare gli elementi dell'array
         $element1 = count($array3);
         print $element1."<br>";
-        //aggiungere un elemento all'array (nome:Topolino, cognome:Paperone, indirizzo:via Caboto 60
-        $array3[] = ["nome" => "Topolino", "cognome" => "Paperone", "indirizzo" => "via Caboto 60"] ;
+        //aggiungere un elemento all'array (nome:Topolino, cognome:Paperone, indirizzo:via Caboto 60)
+        $array3[] = ["nome" => "Topolino", "cognome" => "Paperone", "indirizzo" => "via Caboto 60"];
         //contare gli elementi dell'array
         $element2 = count($array3);
         print $element2."<br>";

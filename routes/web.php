@@ -24,7 +24,10 @@ Route::post('/login', ['as' => 'login', 'uses' => 'UserController@login']);
 Route::post('/user/password/recovery', ['as' => 'user/password/recovery', 'uses' => 'UserController@verify']);
 
 // Array
-Route::get('/arrays', ['as' => 'arrays', 'uses' => 'ArrayController@index']);
+Route::get('/array', ['as' => 'array', 'uses' => 'ArrayController@index']);
+
+// Arrays
+Route::get('/arrays', ['as' => 'arrays', 'uses' => 'ArraysController@index']);
 
 // Date
 Route::get('/dates', ['as' => 'dates', 'uses' => 'DateController@index']);
