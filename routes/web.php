@@ -28,6 +28,8 @@ Route::get('/array', ['as' => 'array', 'uses' => 'ArrayController@index']);
 
 // Arrays
 Route::get('/arrays', ['as' => 'arrays', 'uses' => 'ArraysController@index']);
+Route::post('/array/store', ['as' => 'array/store', 'uses' => 'ArraysController@store']);
+Route::get('/array/{array_id}/show', ['as' => 'array/show', 'uses' => 'ArraysController@show']);
 
 // Date
 Route::get('/dates', ['as' => 'dates', 'uses' => 'DateController@index']);

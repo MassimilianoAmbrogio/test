@@ -18,5 +18,6 @@
     <a href="http://127.0.0.1:8000/arrivals_departures_means" class="list-group-item list-group-item-action">Arrivals Departures Means</a>
     <a href="http://127.0.0.1:8000/arrivals_departures_venues" class="list-group-item list-group-item-action">Arrivals Departures Venues</a>
     <a href="http://127.0.0.1:8000/arrivals_departures" class="list-group-item list-group-item-action">Arrivals Departures</a>
+    <a href="http://127.0.0.1:8000/arrays" class="list-group-item list-group-item-action">Date Nights</a>
     <a href="http://127.0.0.1:8000/login/show" class="list-group-item list-group-item-action">Logout</a>
 </div>
