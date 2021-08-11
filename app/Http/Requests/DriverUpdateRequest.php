@@ -26,6 +26,7 @@ class DriverUpdateRequest extends FormRequest
         return [
             'user_id' => 'required',
             'age' => 'required',
+            'driver' => 'required',
             'active' => 'required',
         ];
     }
@@ -35,6 +36,7 @@ class DriverUpdateRequest extends FormRequest
         return [
             'user_id.required' => 'L\'User è obbligatorio',
             'age.required' => 'L\'Età è obbligatoria',
+            'driver.required' => 'Il Driver è obbligatorio',
             'active.required' => 'Lo Status è obbligatorio',
         ];
     }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Driver extends Model
+class ArrCluster extends Model
 {
-    protected $table = 'drivers';
+    protected $table = 'clusters';
 
     protected $primaryKey = 'id';
     /**
@@ -15,7 +15,7 @@ class Driver extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'age', 'document_type', 'driver', 'active',
+        'slug', 'name', 'active',
     ];
 
     /**
@@ -23,11 +23,6 @@ class Driver extends Model
      *
      * @var array
      */
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 
     protected $hidden = [
         'created_at', 'updated_at',

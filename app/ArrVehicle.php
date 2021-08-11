@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Arrays extends Model
+class ArrVehicle extends Model
 {
-    protected $table = 'clusters';
+    protected $table = 'vehicles';
 
     protected $primaryKey = 'id';
     /**
@@ -15,7 +15,7 @@ class Arrays extends Model
      * @var array
      */
     protected $fillable = [
-        'slug', 'name', 'active',
+        'driver_id', 'brand', 'model', 'active',
     ];
 
     /**

@@ -31,7 +31,16 @@ class ArraysController extends Controller
         ];
         //aggiungere un elemento all'array
         $array2[] = ["data_fine" => count($array2[0][0])];
-        dd($array2);
+
+        $array3 = [
+            array([
+                "driver_id" => '',
+                "brand" => '578',
+                "model" => "500",
+                "active" => "notactive",
+            ]),
+        ];
+        dd($array3);
 
         $datenights = DateNight::all();
         return view('datenights', [

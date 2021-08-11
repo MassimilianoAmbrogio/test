@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ArrVehicle;
 use App\Vehicle;
 use App\Driver;
 use App\Http\Requests\VehicleStoreRequest;
@@ -15,9 +16,11 @@ class VehicleController extends Controller
     {
         $drivers = Driver::where('active', 1)->get();
         $vehicles = Vehicle::all();
+        $arrays = ArrVehicle::all();
         return view('vehicles', [
             'vehicles' => $vehicles,
             'drivers' => $drivers,
+            'arrays' => $arrays,
         ]);
     }
 
@@ -31,6 +34,7 @@ class VehicleController extends Controller
         $data = $request->only( 'driver_id', 'brand', 'model', 'active');
 
         try {
+            ArrVehicle::create($data);
             Vehicle::create($data);
         } catch (\Exception $e) {
             return redirect()->route('vehicles')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());

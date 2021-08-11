@@ -4,7 +4,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Modifica Driver</h4>
     </div>
-    <!-- User, Age, Document Type pre-imposted -->
+    <!-- User, Age, Document Type, Driver pre-imposted -->
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
@@ -24,6 +24,10 @@
                 <label for="document_type" class="control-label">Document Type</label>
                 <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf" required>
                 <a href="{{ $driver->document_type }}" target="_blank">{{ basename($driver->document_type) }}</a>
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="driver" class="control-label">Driver</label>
+                <input type="text" class="form-control" name="driver" id="driver" placeholder="Driver" value="{{ $driver->driver }}" required>
             </div>
             <!-- Status pre-imposted -->
             <div class="col-md-6 form-group">

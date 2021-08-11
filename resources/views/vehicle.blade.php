@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="brand" class="control-label">Brand</label>
-                <input type="text" class="form-control" name="brand" id=brand" placeholder="Brand" value="{{ $vehicle->brand }}" min="1" required>
+                <input type="text" class="form-control" name="brand" id="brand" placeholder="Brand" value="{{ $vehicle->brand }}" min="1" required>
             </div>
             <div class="col-md-6 form-group">
                 <label for="model" class="control-label">Model</label>
