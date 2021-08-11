@@ -31,7 +31,7 @@ class VehicleController extends Controller
 
     public function store(VehicleStoreRequest $request)
     {
-        $data = $request->only( 'driver_id', 'brand', 'model', 'active');
+        $data = $request->only( 'driver_name', 'driver_id', 'brand', 'model', 'active', 'age', 'displacement');
 
         try {
             ArrVehicle::create($data);

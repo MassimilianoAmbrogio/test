@@ -15,7 +15,7 @@ class ArrCluster extends Model
      * @var array
      */
     protected $fillable = [
-        'slug', 'name', 'active',
+        'last_name', 'name', 'active', 'age', 'city'
     ];
 
     /**

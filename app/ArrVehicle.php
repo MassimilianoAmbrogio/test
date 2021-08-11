@@ -15,7 +15,7 @@ class ArrVehicle extends Model
      * @var array
      */
     protected $fillable = [
-        'driver_id', 'brand', 'model', 'active',
+        'driver_name', 'driver_id', 'brand', 'model', 'active', 'age', 'displacement',
     ];
 
     /**

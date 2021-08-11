@@ -11,9 +11,12 @@ class ArraysController extends Controller
     public function index(){
         $array1 = [
             array([
+                "last_name" => "Ambrogio",
                 "name" => "Massimiliano",
                 "slug" => "Ovest",
                 "active" => "active",
+                "age" => "21",
+                "city" => "Turin",
             ]),
         ];
         // Stampa array1
@@ -34,10 +37,13 @@ class ArraysController extends Controller
 
         $array3 = [
             array([
+                "driver_name" => 'Matteo',
                 "driver_id" => '',
                 "brand" => '578',
                 "model" => "500",
                 "active" => "notactive",
+                "age" => '35',
+                "displacement" => '1100',
             ]),
         ];
         dd($array3);
