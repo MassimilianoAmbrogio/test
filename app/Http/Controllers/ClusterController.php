@@ -7,6 +7,7 @@ use App\Accommodation;
 use App\Cluster;
 use App\Http\Requests\ClusterStoreRequest;
 use App\Http\Requests\ClusterUpdateRequest;
+use App\Http\Requests\ArrClusterStoreRequest;
 
 use Illuminate\Http\Request;
 
@@ -38,15 +39,17 @@ class ClusterController extends Controller
      * @param  \Illuminate\Http\RoomStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClusterStoreRequest $request)
+    public function store(ClusterStoreRequest $request, ArrClusterStoreRequest $request)
     {
-        $data = $request->only( 'last_name', 'name', 'active', 'age', 'city');
+        $data = $request->only(  'name', 'active');
+        $data2 = $request->only( 'last_name', 'name', 'active', 'age', 'city');
 
         $data["slug"] = str_slug($data["name"]);
+        $data2["slug"] = str_slug($data["name"]);
 
         try {
-            ArrCluster::create($data);
             Cluster::create($data);
+            ArrCluster::create($data2);
         } catch (\Exception $e) {
             return redirect()->route('clusters')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }

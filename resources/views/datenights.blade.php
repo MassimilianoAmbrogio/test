@@ -20,14 +20,12 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($arrays as $array)
-                @php $edit_array = route("array/show", ["array_id" => $array->id]) @endphp
-                @php $delete_array = route("array/delete", ["array_id" => $array->id]) @endphp
+            @foreach($datenights as $datenight)
                 <tr>
-                    <td scope="col">{{ $array->data_inizio }}</td>
-                    <td scope="col">{{ $array->numero_notti }}</td>
-                    <td scope="col">{{ $array->data_fine }}</td>
-                    <td scope="col">{{ $array->active ? "Attivo" : "Non Attivo" }}</td>
+                    <td scope="col">{{ $datenight->data_inizio }}</td>
+                    <td scope="col">{{ $datenight->numero_notti }}</td>
+                    <td scope="col">{{ $datenight->data_fine }}</td>
+                    <td scope="col">{{ $datenight->active ? "Attivo" : "Non Attivo" }}</td>
                 </tr>
             @endforeach
             </tbody>

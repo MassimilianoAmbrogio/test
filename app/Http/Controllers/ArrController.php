@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\DateNight;
-
-class ArraysController extends Controller
+class ArrController extends Controller
 {
     public function index(){
         $array1 = [
@@ -24,21 +22,23 @@ class ArraysController extends Controller
         //aggiungere un elemento all'array
         $array1[] = ["name" => "Alessandro", "slug" => "Est", "active" => "notactive"];
         print_r($array1)."<br>";
+        //dd($array1);
 
         $array2 = [
             array([
                 "data_inizio" => '13/08/2021',
-                "numero_notti" => "Massimiliano",
+                "numero_notti" => "4",
                 "data_fine" => "17/08/2021",
             ]),
         ];
-        //aggiungere un elemento all'array
-        $array2[] = ["data_fine" => count($array2[0][0])];
+        //aggiungere un elemento all'array (attributo data_fine calcolato come data_inizio + numero_notti)
+        $array2[] = ["data_fine" => count(array("data_inizio", "numero_notti"))];
+        //dd($array2);
 
         $array3 = [
             array([
                 "driver_name" => 'Matteo',
-                "driver_id" => '',
+                "driver_id" => 'null',
                 "brand" => '578',
                 "model" => "500",
                 "active" => "notactive",
@@ -47,31 +47,5 @@ class ArraysController extends Controller
             ]),
         ];
         dd($array3);
-
-        $datenights = DateNight::all();
-        return view('datenights', [
-            'datenights' => $datenights,
-        ]);
-    }
-
-    public function store(ClusterStoreRequest $request)
-    {
-        $data = $request->only('data_inizio', 'numero_notti', 'data_fine');
-
-        try {
-            DateNight::create($data);
-        } catch (\Exception $e) {
-            return redirect()->route('arrays')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
-        }
-        return redirect()->route('arrays')->with('success', 'Operazione completata con successo');
-    }
-
-    public function show($datenight_id)
-    {
-        $datenight = DateNight::find($datenight_id);
-        return view("datenight", [
-            "datenight" => $datenight,
-        ]);
     }
 }
-
