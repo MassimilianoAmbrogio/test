@@ -17,8 +17,6 @@ class ArrController extends Controller
                 "city" => "Turin",
             ]),
         ];
-        // Stampa array1
-        print_r($array1)."<br>";
         //aggiungere un elemento all'array
         $array1[] = ["name" => "Alessandro", "slug" => "Est", "active" => "notactive"];
         print_r($array1)."<br>";
