@@ -7,7 +7,6 @@ use App\Vehicle;
 use App\Driver;
 use App\Http\Requests\VehicleStoreRequest;
 use App\Http\Requests\VehicleUpdateRequest;
-use App\Http\Requests\ArrVehicleStoreRequest;
 
 use Illuminate\Http\Request;
 
@@ -30,14 +29,12 @@ class VehicleController extends Controller
         //
     }
 
-    public function store(VehicleStoreRequest $request, ArrVehicleStoreRequest $request)
+    public function store(VehicleStoreRequest $request)
     {
         $data = $request->only( 'driver_id', 'brand', 'model', 'active');
-        $data2 = $request->only( 'driver_name', 'driver_id', 'brand', 'model', 'active', 'age', 'displacement');
 
         try {
             Vehicle::create($data);
-            ArrVehicle::create($data2);
         } catch (\Exception $e) {
             return redirect()->route('vehicles')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }

@@ -15,7 +15,7 @@ class DateNight extends Model
      * @var array
      */
     protected $fillable = [
-        'data_inizio', 'numero_notti', 'data_fine',
+        'data_inizio', 'numero_notti', 'data_fine', 'active',
     ];
 
     protected $hidden = [

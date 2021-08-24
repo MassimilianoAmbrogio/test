@@ -19,13 +19,13 @@ class DateNightController extends Controller
 
     public function store(DateNightStoreRequest $request)
     {
-        $data = $request->only('data_inizio', 'numero_notti', 'data_fine');
+        $data = $request->only('data_inizio', 'numero_notti', 'data_fine', 'active');
 
         try {
             DateNight::create($data);
         } catch (\Exception $e) {
-            return redirect()->route('arrays')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
+            return redirect()->route('datenights')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }
-        return redirect()->route('arrays')->with('success', 'Operazione completata con successo');
+        return redirect()->route('datenights')->with('success', 'Operazione completata con successo');
     }
 }

@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="numero_notti" class="control-label">Numero Notti</label>
-                            <input type="text" class="form-control" name="numero_notti" id="numero_notti" placeholder="Numero Notti" required>
+                            <input type="text" class="form-control" name="numero_notti" id="numero_notti" placeholder="Numero Notti" min="1" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="data_fine" class="control-label">Data Fine</label>

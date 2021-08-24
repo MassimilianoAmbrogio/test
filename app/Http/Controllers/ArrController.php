@@ -36,7 +36,7 @@ class ArrController extends Controller
         $array3 = [
             array([
                 "driver_name" => 'Matteo',
-                "driver_id" => 'null',
+                "driver_id" => '2',
                 "brand" => '578',
                 "model" => "500",
                 "active" => "notactive",
