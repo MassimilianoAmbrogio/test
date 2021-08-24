@@ -62,11 +62,24 @@ class DriverController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         //
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\DriverUpdateRequest $request
+     * @param  int  $driver_id
+     * @return \Illuminate\Http\Response
+     */
     public function update(DriverUpdateRequest $request, $driver_id)
     {
         $data = $request->only('user_id', 'age', 'driver', 'active');
@@ -95,6 +108,12 @@ class DriverController extends Controller
         return redirect()->route('drivers')->with('success', 'Operazione completata con successo');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $driver_id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($driver_id)
     {
         $driver = Driver::find($driver_id);
