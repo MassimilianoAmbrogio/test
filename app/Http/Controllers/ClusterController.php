@@ -34,7 +34,7 @@ class ClusterController extends Controller
 
     public function store(ClusterStoreRequest $request)
     {
-        $data = $request->only(  'name', 'active');
+        $data = $request->only(  'last_name', 'name', 'active', 'age', 'city');
 
         $data["slug"] = str_slug($data["name"]);
 
