@@ -22,9 +22,9 @@
             <tbody>
             @foreach($datenights as $datenight)
                 <tr>
-                    <td scope="col">{{ $datenight->data_inizio }}</td>
+                    <td scope="col">{{ \Carbon\Carbon::parse($datenight->data_inizio)->format('d/m/Y') }}</td>
                     <td scope="col">{{ $datenight->numero_notti }}</td>
-                    <td scope="col">{{ $datenight->data_fine }}</td>
+                    <td scope="col">{{ \Carbon\Carbon::parse($datenight->data_fine)->format('d/m/Y') }}</td>
                     <td scope="col">{{ $datenight->active ? "Attivo" : "Non Attivo" }}</td>
                 </tr>
             @endforeach
