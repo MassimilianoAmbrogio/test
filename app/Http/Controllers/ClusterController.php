@@ -22,11 +22,6 @@ class ClusterController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -46,12 +41,6 @@ class ClusterController extends Controller
         return redirect()->route('clusters')->with('success', 'Operazione completata con successo');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $clusters_id
-     * @return \Illuminate\Http\Response
-     */
     public function show($clusters_id)
     {
         $cluster = Cluster::find($clusters_id);
@@ -60,12 +49,6 @@ class ClusterController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
