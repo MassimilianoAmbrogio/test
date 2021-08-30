@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ArrCluster;
 use App\Accommodation;
 use App\Cluster;
 use App\Http\Requests\ClusterStoreRequest;
@@ -14,11 +13,9 @@ class ClusterController extends Controller
 {
     public function index()
     {
-        $arrays = ArrCluster::all();
         $clusters = Cluster::all();
         return view('clusters', [
             'clusters' => $clusters,
-            'arrays' => $arrays,
         ]);
     }
 
@@ -29,7 +26,7 @@ class ClusterController extends Controller
 
     public function store(ClusterStoreRequest $request)
     {
-        $data = $request->only(  'last_name', 'name', 'active', 'age', 'city');
+        $data = $request->only(  'name', 'active');
 
         $data["slug"] = str_slug($data["name"]);
 

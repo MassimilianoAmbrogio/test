@@ -2,48 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Cluster;
+use App\DateNight;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 class ArrController extends Controller
 {
     public function index(){
-        $array1 = [
-            array([
-                "last_name" => "Ambrogio",
-                "name" => "Massimiliano",
-                "slug" => "Ovest",
-                "active" => "active",
-                "age" => "21",
-                "city" => "Turin",
-            ]),
+        // Es. 1
+
+        $array1[0] = [
+            "name" => "Massimiliano",
+            "active" => "1",
+            "slug" => "ovest",
         ];
-        //aggiungere un elemento all'array
-        $array1[] = ["name" => "Alessandro", "slug" => "Est", "active" => "notactive"];
-        print_r($array1)."<br>";
+
+        // aggiunta nuovo elemento all'array
+        $array1[1] = [
+            "name" => "Alessandro",
+            "active" => "1",
+            "slug" => "est",
+        ];
         //dd($array1);
 
-        $array2 = [
-            array([
-                "data_inizio" => '13/08/2021',
-                "numero_notti" => "4",
-                "data_fine" => "17/08/2021",
-            ]),
+        // Inserimento nel DB
+        /*try {
+            Cluster::insert($array1);
+        } catch (\Exception $e) {
+            dd('Qualcosa è andato storto:' . $e->getMessage());
+        }*/
+
+        // Es. 2
+       $array2 = [
+           "data_inizio" => "2021-08-16",
         ];
-        //aggiungere un elemento all'array (attributo data_fine calcolato come data_inizio + numero_notti)
-        $array2[] = ["data_fine" => count(array("data_inizio", "numero_notti"))];
+        // aggiunta nuovi elementi all'array
+        $numero_notti = 5;
+        $array2['numero_notti'] = $numero_notti;
+        $data_inizio = Carbon::parse($array2['data_inizio'],'Europe/Rome');
+        $num_nights = $array2['numero_notti'];
+        $data_fine = $data_inizio->addDays($num_nights);
+        $array2['data_fine'] = $data_fine->format('Y-m-d');
+        $active = 1;
+        $array2['active'] = $active;
         //dd($array2);
 
-        $array3 = [
-            array([
-                "driver_name" => 'Matteo',
-                "driver_id" => '2',
-                "brand" => '578',
-                "model" => "500",
-                "active" => "notactive",
-                "age" => '35',
-                "displacement" => '1100',
-            ]),
-        ];
-        dd($array3);
+        try {
+            DateNight::insert($array2);
+        } catch (\Exception $e) {
+            dd('error', 'Qualcosa è andato storto:' . $e->getMessage());
+        }
+
+        dd("ok");
     }
 }

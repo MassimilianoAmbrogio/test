@@ -29,10 +29,6 @@ Route::get('/array', ['as' => 'array', 'uses' => 'ArrayController@index']);
 // Arrays
 Route::get('/arrays', ['as' => 'arrays', 'uses' => 'ArrController@index']);
 
-// DateNight
-Route::get('/datenights', ['as' => 'datenights', 'uses' => 'DateNightController@index']);
-Route::post('/datenight/store', ['as' => 'datenight/store', 'uses' => 'DateNightController@store']);
-
 // Date
 Route::get('/dates', ['as' => 'dates', 'uses' => 'DateController@index']);
 

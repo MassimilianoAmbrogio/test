@@ -15,7 +15,7 @@ class Cluster extends Model
      * @var array
      */
     protected $fillable = [
-        'slug', 'name', 'active',
+         'name', 'slug', 'active',
     ];
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ArrVehicle;
 use App\Vehicle;
 use App\Driver;
 use App\Http\Requests\VehicleStoreRequest;
@@ -16,11 +15,9 @@ class VehicleController extends Controller
     {
         $drivers = Driver::where('active', 1)->get();
         $vehicles = Vehicle::all();
-        $arrays = ArrVehicle::all();
         return view('vehicles', [
             'vehicles' => $vehicles,
             'drivers' => $drivers,
-            'arrays' => $arrays,
         ]);
     }
 
@@ -31,7 +28,7 @@ class VehicleController extends Controller
 
     public function store(VehicleStoreRequest $request)
     {
-        $data = $request->only( 'driver_name', 'driver_id', 'brand', 'model', 'active', 'age', 'displacement');
+        $data = $request->only( 'driver_id', 'brand', 'model', 'active');
 
         try {
             Vehicle::create($data);
