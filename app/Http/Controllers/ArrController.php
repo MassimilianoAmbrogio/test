@@ -67,7 +67,7 @@ class ArrController extends Controller
         $vehicle = [
             "driver_id" => null,
             "brand" => "34",
-            "model" => "Punto",
+            "model" => "500",
             "active" => "1",
         ];
         //dd($vehicle);
@@ -82,27 +82,27 @@ class ArrController extends Controller
         //dd($driver);
 
         //creare driver
-        /*try {
+        try {
             $new_driver = Driver::create($driver);
         } catch (\Exception $e) {
             dd('error', 'Qualcosa è andato storto:' . $e->getMessage());
-        }*/
+        }
 
         //sostituire driver_id
         $vehicle = [
             "driver_id" => $new_driver->id,
             "brand" => "34",
-            "model" => "Punto",
+            "model" => "500",
             "active" => "1",
         ];
         //dd($vehicle);
 
         //inserimento driver creato nella tabella vehicles
-        /*try {
+        try {
             Vehicle::insert($vehicle);
         } catch (\Exception $e) {
             dd('error', 'Qualcosa è andato storto:' . $e->getMessage());
-        }*/
+        }
         dd("ok");
     }
 }
