@@ -27,10 +27,6 @@
                             <label for="document_type" class="control-label">Document Type</label>
                             <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf" required>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label for="driver" class="control-label">Driver</label>
-                            <input type="text" class="form-control" name="driver" id="driver" placeholder="Driver" required>
-                        </div>
                         <!-- Status -->
                         <div class="col-md-6 form-group">
                             <label for="active" class="control-label">Status</label>

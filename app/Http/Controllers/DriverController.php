@@ -29,7 +29,7 @@ class DriverController extends Controller
 
     public function store(DriverStoreRequest $request)
     {
-        $data = $request->only( 'user_id', 'age', 'driver', 'active');
+        $data = $request->only( 'user_id', 'age', 'active');
 
         try {
             $driver = Driver::create($data);
@@ -69,7 +69,7 @@ class DriverController extends Controller
 
     public function update(DriverUpdateRequest $request, $driver_id)
     {
-        $data = $request->only('user_id', 'age', 'driver', 'active');
+        $data = $request->only('user_id', 'age', 'active');
 
         try {
             $driver = Driver::find($driver_id);

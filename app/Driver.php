@@ -15,7 +15,7 @@ class Driver extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'age', 'document_type', 'driver', 'active',
+        'user_id', 'age', 'document_type', 'active',
     ];
 
     /**
