@@ -54,6 +54,7 @@ class ArrController extends Controller
         $array2['active'] = $active;
         //dd($array2);
 
+        // Inserimento nel DB
         /*try {
             DateNight::insert($array2);
         } catch (\Exception $e) {
