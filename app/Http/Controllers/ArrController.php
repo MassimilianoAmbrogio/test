@@ -82,11 +82,11 @@ class ArrController extends Controller
         //dd($driver);
 
         //creare driver
-        try {
+        /*try {
             $new_driver = Driver::create($driver);
         } catch (\Exception $e) {
             dd('error', 'Qualcosa è andato storto:' . $e->getMessage());
-        }
+        }*/
 
         //sostituire driver_id
         $vehicle = [
@@ -98,11 +98,11 @@ class ArrController extends Controller
         //dd($vehicle);
 
         //inserimento driver creato nella tabella vehicles
-        try {
+        /*try {
             Vehicle::insert($vehicle);
         } catch (\Exception $e) {
             dd('error', 'Qualcosa è andato storto:' . $e->getMessage());
-        }
+        }*/
         dd("ok");
     }
 }

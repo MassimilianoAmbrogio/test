@@ -146,4 +146,11 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('/arrivals_departure/{arrivals_departure_id}/show', ['as' => 'arrivals_departure/show', 'uses' => 'ArrivalsDepartureController@show']);
     Route::post('/arrivals_departure/{arrivals_departure_id}/update', ['as' => 'arrivals_departure/update', 'uses' => 'ArrivalsDepartureController@update']);
     Route::get('/arrivals_departure/{arrivals_departure_id}/delete', ['as' => 'arrivals_departure/delete', 'uses' => 'ArrivalsDepartureController@destroy']);
+
+// Form Data
+    Route::get('/form_datas', ['as' => 'form_datas', 'uses' => 'FormDataController@index']);
+    Route::post('/form_data/store', ['as' => 'form_data/store', 'uses' => 'FormDataController@store']);
+    Route::get('/form_data/{form_data_id}/show', ['as' => 'form_data/show', 'uses' => 'FormDataController@show']);
+    Route::post('/form_data/{form_data_id}/update', ['as' => 'form_data/update', 'uses' => 'FormDataController@update']);
+    Route::get('/form_data/{form_data_id}/delete', ['as' => 'form_data/delete', 'uses' => 'FormDataController@destroy']);
 });
