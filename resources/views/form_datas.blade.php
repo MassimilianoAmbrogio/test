@@ -22,6 +22,10 @@
                 <th scope="col">Arrival Hour</th>
                 <th scope="col">Number Flight Departure</th>
                 <th scope="col">Airline Departure</th>
+            </tr>
+            </thead>
+            <thead>
+            <tr>
                 <th scope="col">Arrival City</th>
                 <th scope="col">Departure Date</th>
                 <th scope="col">Departure Hour</th>

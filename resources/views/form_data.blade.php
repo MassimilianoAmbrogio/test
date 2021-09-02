@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="number_flight_arrival" class="control-label">Number Flight Arrival</label>
-                <input type="number" class="form-control" name="number_flight_arrival" id="number_flight_arrival" placeholder="Number Flight Arrival" value="{{ $form_data->number_flight_arrival }}" required>
+                <input type="number" class="form-control" name="number_flight_arrival" id="number_flight_arrival" placeholder="Number Flight Arrival" value="{{ $form_data->number_flight_arrival }}" min="1" required>
             </div>
             <div class="col-md-6 form-group">
                 <label for="airline_arrival" class="control-label">Airline Arrival</label>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="number_flight_departure" class="control-label">Number Flight Departure</label>
-                <input type="number" class="form-control" name="number_flight_departure" id="number_flight_departure" placeholder="Number Flight Departure" value="{{ $form_data->number_flight_departure }}" required>
+                <input type="number" class="form-control" name="number_flight_departure" id="number_flight_departure" placeholder="Number Flight Departure" value="{{ $form_data->number_flight_departure }}" min="1" required>
             </div>
             <div class="col-md-6 form-group">
                 <label for="airline_departure" class="control-label">Airline Departure</label>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="passport_number" class="control-label">Passport Number</label>
-                <input type="number" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" value="{{ $form_data->passport_number }}" required>
+                <input type="number" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" value="{{ $form_data->passport_number }}" min="1" required>
             </div>
             <div class="col-md-6 form-group">
                 <label for="passport_expiry_date" class="control-label">Passport Expiry Date</label>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="tipology_room" class="control-label">Tipology Room</label>
-                <select class="form-control" name="tipology_room" id="tipology_room" visibility="hidden" required>
+                <select class="form-control" name="tipology_room" id="tipology_room">
                     <option value="">Select Typology</option>
                     <option value="1">Singola</option>
                     <option value="0">Doppia</option>

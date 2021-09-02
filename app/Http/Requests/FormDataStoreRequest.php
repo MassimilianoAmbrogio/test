@@ -38,8 +38,6 @@ class FormDataStoreRequest extends FormRequest
             'departure_hour' => 'required',
             'passport_number' => 'required',
             'passport_expiry_date' => 'required',
-            'hotel' => 'required',
-            'tipology_room' => 'required',
             'special_request' => 'required',
             'active' => 'required'
         ];
@@ -62,8 +60,6 @@ class FormDataStoreRequest extends FormRequest
             'departure_hour.required' => 'La Departure Hour è obbligatoria',
             'passport_number.required' => 'Il Passport Number è obbligatorio',
             'passport_expiry_date.required' => 'Il Passport Expiry Date è obbligatorio',
-            'hotel.required' => 'L\' Hotel è obbligatorio',
-            'tipology_room.required' => 'La Tipology Room è obbligatoria',
             'special_request.required' => 'La Special Request è obbligatoria',
             'active.required' => 'Lo Status è obbligatorio'
         ];

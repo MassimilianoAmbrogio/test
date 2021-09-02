@@ -7,3 +7,12 @@ function open_edit_modal(resourceId, modalClass, modalId) {
         $('#'+ modalId).modal('show');
     });
 }
+
+// Visualizza / Nascondi Div al click del button radio
+function mostra() {
+    document.getElementById("content").style.display="block";
+}
+
+function nascondi() {
+    document.getElementById("content").style.display="none";
+}
