@@ -1,6 +1,6 @@
 <div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 70%;">
-        <div class="modal-content" >
+    <div class="modal-dialog">
+        <div class="modal-content">
             <form action="{{ route('form_data/store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-header">
@@ -11,8 +11,8 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label for="name" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                            <label for="first_name" class="control-label">First Name</label>
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="last_name" class="control-label">Last Name</label>
@@ -85,22 +85,22 @@
                             <input type="file" class="form-control" name="passport_img" id="passport_img" accept="application/img" required>
                         </div>
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostra()" required>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="mostra" required>
                             <label class="form-check-label" for="flexRadioDefault1">Hotel Necessary</label>
                         </div>
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="nascondi()" required>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="nascondi" required>
                             <label class="form-check-label" for="flexRadioDefault2">Hotel Not Necessary</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="special_request" class="control-label">Special Request</label>
-                            <textarea name="special_request" id="special_request" cols="57"></textarea>
+                            <textarea name="special_request" id="special_request" cols="57" required></textarea>
                         </div>
-                        <div class="col-md-6 form-group" id="content" hidden>
+                        <div class="col-md-6 form-group" id="content">
                             <label for="tipology_room" class="control-label">Tipology Room</label>
-                            <select class="form-control" name="tipology_room" id="tipology_room">
+                            <select class="form-control" name="tipology_room" id="tipology_room" required>
                                 <option value="">Select Typology</option>
                                 <option value="1">Singola</option>
                                 <option value="0">Doppia</option>

@@ -26,7 +26,7 @@ class FormDataController extends Controller
 
     public function store(FormDataStoreRequest $request)
     {
-        $data = $request->only('name', 'last_name', 'number_flight_arrival', 'airline_arrival', 'departure_city', 'arrival_date', 'arrival_hour', 'number_flight_departure', 'airline_departure', 'arrival_city', 'departure_date', 'departure_hour', 'passport_number', 'passport_expiry_date', 'passport_img', 'hotel', 'tipology_room', 'special_request', 'active');
+        $data = $request->only('first_name', 'last_name', 'number_flight_arrival', 'airline_arrival', 'departure_city', 'arrival_date', 'arrival_hour', 'number_flight_departure', 'airline_departure', 'arrival_city', 'departure_date', 'departure_hour', 'passport_number', 'passport_expiry_date', 'hotel', 'tipology_room', 'special_request', 'active');
 
         try {
             $form_data = FormData::create($data);
@@ -52,8 +52,10 @@ class FormDataController extends Controller
     public function show($form_data_id)
     {
         $form_data = FormData::find($form_data_id);
+        $arrival = FormData::find($form_data_id);
         return view("form_data", [
             "form_data" => $form_data,
+            "arrival" => $arrival,
         ]);
     }
 
@@ -64,7 +66,7 @@ class FormDataController extends Controller
 
     public function update(FormDataUpdateRequest $request, $form_data_id)
     {
-        $data = $request->only('name', 'last_name', 'number_flight_arrival', 'airline_arrival', 'departure_city', 'arrival_date', 'arrival_hour', 'number_flight_departure', 'airline_departure', 'arrival_city', 'departure_date', 'departure_hour', 'passport_number', 'passport_expiry_date', 'passport_img', 'hotel', 'tipology_room', 'special_request', 'active');
+        $data = $request->only('first_name', 'last_name', 'number_flight_arrival', 'airline_arrival', 'departure_city', 'arrival_date', 'arrival_hour', 'number_flight_departure', 'airline_departure', 'arrival_city', 'departure_date', 'departure_hour', 'passport_number', 'passport_expiry_date', 'hotel', 'tipology_room', 'special_request', 'active');
 
         try {
             $form_data = FormData::find($form_data_id);

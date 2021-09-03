@@ -13,27 +13,12 @@
         <table class="table" style="margin-top: 10px;">
             <thead>
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
-                <th scope="col">Number Flight Arrival</th>
-                <th scope="col">Airline Arrival</th>
-                <th scope="col">Departure City</th>
-                <th scope="col">Arrival Date</th>
-                <th scope="col">Arrival Hour</th>
-                <th scope="col">Number Flight Departure</th>
-                <th scope="col">Airline Departure</th>
-            </tr>
-            </thead>
-            <thead>
-            <tr>
-                <th scope="col">Arrival City</th>
-                <th scope="col">Departure Date</th>
-                <th scope="col">Departure Hour</th>
-                <th scope="col">Passport Number</th>
-                <th scope="col">Passport Expiry Date</th>
-                <th scope="col">Passport Img</th>
-                <th scope="col">Hotel</th>
-                <th scope="col">Tipology Room</th>
+                <th scope="col">Arrival</th>
+                <th scope="col">Departure</th>
+                <th scope="col">Passport</th>
+                <th scope="col">Accommodation</th>
                 <th scope="col">Special Request</th>
                 <th scope="col">Status</th>
             </tr>
@@ -41,10 +26,17 @@
             <tbody>
             @foreach($form_datas as $form_data)
                 @php $edit_form_data = route("form_data/show", ["form_data_id" => $form_data->id]) @endphp
+                @php $edit_arrival = route("arrival/show", ["form_data_id" => $form_data->id]) @endphp
                 @php $delete_form_data = route("form_data/delete", ["form_data_id" => $form_data->id]) @endphp
                 <tr>
-                    <td scope="col">{{ $form_data->name }}</td>
+                    <td scope="col">{{ $form_data->first_name }}</td>
                     <td scope="col">{{ $form_data->last_name }}</td>
+                    <td>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $edit_arrival }}"
+                           class="btn btn-warning editArrival{{ $form_data->id }}"
+                           onclick="open_edit_modal({{ $form_data->id }},'editArrival','updateModal')">Arrival</a>
+                    </td>
                     <td scope="col">{{ $form_data->number_flight_arrival }}</td>
                     <td scope="col">{{ $form_data->airline_arrival }}</td>
                     <td scope="col">{{ $form_data->departure_city }}</td>
@@ -59,7 +51,7 @@
                     <td scope="col">{{ $form_data->passport_expiry_date }}</td>
                     <td scope="col">{{ basename($form_data->passport_img) }}</td>
                     <td scope="col">{{ $form_data->hotel }}</td>
-                    <td scope="col">{{ $form_data->tipology_room }}</td>
+                    <td scope="col">{{ $form_data->tipology_room ? "Singola" : "Doppia" }}</td>
                     <td scope="col">{{ $form_data->special_request }}</td>
                     <td scope="col">{{ $form_data->active ? "Attivo" : "Non Attivo" }}</td>
                     <td class="text-right">

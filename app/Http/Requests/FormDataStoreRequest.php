@@ -24,7 +24,7 @@ class FormDataStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'first_name' => 'required',
             'last_name' => 'required',
             'number_flight_arrival' => 'required',
             'airline_arrival' => 'required',
@@ -46,7 +46,7 @@ class FormDataStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Il Name è obbligatorio',
+            'first_name.required' => 'Il Name è obbligatorio',
             'last_name.required' => 'Il Last Name è obbligatorio',
             'number_flight_arrival.required' => 'Il Number Flight Arrival è obbligatorio',
             'airline_arrival.required' => 'L\' Airline Arrival è obbligatorio',

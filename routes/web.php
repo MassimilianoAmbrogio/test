@@ -153,4 +153,8 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('/form_data/{form_data_id}/show', ['as' => 'form_data/show', 'uses' => 'FormDataController@show']);
     Route::post('/form_data/{form_data_id}/update', ['as' => 'form_data/update', 'uses' => 'FormDataController@update']);
     Route::get('/form_data/{form_data_id}/delete', ['as' => 'form_data/delete', 'uses' => 'FormDataController@destroy']);
+
+    // Arrival
+    Route::get('/arrival/{arrival_id}/show', ['as' => 'arrival/show', 'uses' => 'FormDataController@show']);
+    Route::post('/arrival/{arrival_id}/update', ['as' => 'arrival/update', 'uses' => 'FormDataController@update']);
 });

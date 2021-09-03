@@ -61,3 +61,7 @@
     margin-left: 20px;
 }
 
+/* MODAL CREATE, UPDATE */
+.modal-dialog {
+    width: 70%;
+}
