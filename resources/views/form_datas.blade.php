@@ -26,32 +26,38 @@
             <tbody>
             @foreach($form_datas as $form_data)
                 @php $edit_form_data = route("form_data/show", ["form_data_id" => $form_data->id]) @endphp
-                @php $edit_arrival = route("arrival/show", ["form_data_id" => $form_data->id]) @endphp
+                @php $form_data_arrival = route("form_data/arrival/show", ["form_data_id" => $form_data->id]) @endphp
+                @php $form_data_departure = route("form_data/departure/show", ["form_data_id" => $form_data->id]) @endphp
+                @php $form_data_passport = route("form_data/passport/show", ["form_data_id" => $form_data->id]) @endphp
+                @php $form_data_hotel = route("form_data/hotel/show", ["form_data_id" => $form_data->id]) @endphp
                 @php $delete_form_data = route("form_data/delete", ["form_data_id" => $form_data->id]) @endphp
                 <tr>
                     <td scope="col">{{ $form_data->first_name }}</td>
                     <td scope="col">{{ $form_data->last_name }}</td>
                     <td>
                         <a href="javascript:void(0)"
-                           data-href="{{ $edit_arrival }}"
-                           class="btn btn-warning editArrival{{ $form_data->id }}"
-                           onclick="open_edit_modal({{ $form_data->id }},'editArrival','updateModal')">Arrival</a>
+                           data-href="{{ $form_data_arrival }}"
+                           class="btn btn-success editArrival{{ $form_data->id }}"
+                           onclick="open_edit_modal({{ $form_data->id }},'editArrival','arrivalModal')">Arrival</a>
                     </td>
-                    <td scope="col">{{ $form_data->number_flight_arrival }}</td>
-                    <td scope="col">{{ $form_data->airline_arrival }}</td>
-                    <td scope="col">{{ $form_data->departure_city }}</td>
-                    <td scope="col">{{ \Carbon\Carbon::parse($form_data->arrival_date)->format('d/m/Y') }}</td>
-                    <td scope="col">{{ \Carbon\Carbon::parse($form_data->arrival_hour)->format("H:i") }}</td>
-                    <td scope="col">{{ $form_data->number_flight_departure }}</td>
-                    <td scope="col">{{ $form_data->airline_departure }}</td>
-                    <td scope="col">{{ $form_data->arrival_city }}</td>
-                    <td scope="col">{{ \Carbon\Carbon::parse($form_data->departure_date)->format('d/m/Y') }}</td>
-                    <td scope="col">{{ \Carbon\Carbon::parse($form_data->departure_hour)->format("H:i") }}</td>
-                    <td scope="col">{{ $form_data->passport_number }}</td>
-                    <td scope="col">{{ $form_data->passport_expiry_date }}</td>
-                    <td scope="col">{{ basename($form_data->passport_img) }}</td>
-                    <td scope="col">{{ $form_data->hotel }}</td>
-                    <td scope="col">{{ $form_data->tipology_room ? "Singola" : "Doppia" }}</td>
+                    <td>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $form_data_departure }}"
+                           class="btn btn-success editDeparture{{ $form_data->id }}"
+                           onclick="open_edit_modal({{ $form_data->id }},'editDeparture','departureModal')">Departure</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $form_data_passport }}"
+                           class="btn btn-success editPassport{{ $form_data->id }}"
+                           onclick="open_edit_modal({{ $form_data->id }},'editPassport','passportModal')">Passport</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $form_data_hotel }}"
+                           class="btn btn-success editHotel{{ $form_data->id }}"
+                           onclick="open_edit_modal({{ $form_data->id }},'editHotel','hotelModal')">Hotel</a>
+                    </td>
                     <td scope="col">{{ $form_data->special_request }}</td>
                     <td scope="col">{{ $form_data->active ? "Attivo" : "Non Attivo" }}</td>
                     <td class="text-right">
@@ -71,9 +77,28 @@
     @include("modals.form_data-store")
 
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel">
+        <div class="modal-dialog" role="document" style="width: 70%;">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="arrivalModal" tabindex="-1" role="dialog" aria-labelledby="arrivalModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content"></div>
         </div>
     </div>
-
+    <div class="modal fade" id="departureModal" tabindex="-1" role="dialog" aria-labelledby="departureModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="passportModal" tabindex="-1" role="dialog" aria-labelledby="passportModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="hotelModal" tabindex="-1" role="dialog" aria-labelledby="hotelModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
 @endsection

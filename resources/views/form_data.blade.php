@@ -4,7 +4,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Modifica Form Data</h4>
     </div>
-    <!-- Name, Last Name, Number Flight Arrival, Airline Arrival, Departure City, Arrival Date, Arrival Hour, Number Flight Departure, Airline Departure, Arrival City, Departure Date, Departure Hour, Passport Number, Passport Expiry Date, Passport Img, Hotel Necessary/Not Necessary, Tipology Room, Special Request pre-imposted-->
+    <!-- Name, Last Name, Number Flight Arrival, Airline Arrival, Departure City, Arrival Date, Arrival Hour, Number Flight Departure, Airline Departure, Arrival City, Departure Date, Departure Hour, Passport Number, Passport Expiry Date, Passport Img, Hotel Necessary/Not Necessary, Tipology Room, Special Request pre-imposted -->
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
@@ -94,11 +94,11 @@
         <div class="row">
             <div class="col-md-6 form-group">
                 <label for="special_request" class="control-label">Special Request</label>
-                <textarea name="special_request" id="special_request" cols="30" required>{{ $form_data->special_request }}</textarea>
+                <textarea name="special_request" id="special_request" cols="57" required>{{ $form_data->special_request }}</textarea>
             </div>
             <div class="col-md-6 form-group" id="content">
                 <label for="tipology_room" class="control-label">Tipology Room</label>
-                <select class="form-control" name="tipology_room" id="tipology_room" required>
+                <select class="form-control" name="tipology_room" id="tipology_room">
                     <option value="">Select Typology</option>
                     <option value="1" {{ $form_data->tipology_room == 1 ? "selected" : "" }}>Singola</option>
                     <option value="0" {{ $form_data->tipology_room == 0 ? "selected" : "" }}>Doppia</option>

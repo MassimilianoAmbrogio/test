@@ -1,10 +1,10 @@
-<form action="{{ route("arrival/update", ["form_data_id" => $form_data->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route("form_data/arrival/update", ["form_data_id" => $form_data->id]) }}" method="POST">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Arrival</h4>
+        <h4 class="modal-title" id="myModalLabel">Modifica Arrival</h4>
     </div>
-    <!-- Name, Last Name, Number Flight Arrival, Airline Arrival, Departure City, Arrival Date, Arrival Hour, Number Flight Departure, Airline Departure, Arrival City, Departure Date, Departure Hour, Passport Number, Passport Expiry Date, Passport Img, Hotel Necessary/Not Necessary, Tipology Room, Special Request pre-imposted-->
+    <!-- Number Flight Arrival, Airline Arrival, Departure City, Arrival Date, Arrival Hour pre-imposted -->
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">

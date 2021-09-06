@@ -155,6 +155,18 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('/form_data/{form_data_id}/delete', ['as' => 'form_data/delete', 'uses' => 'FormDataController@destroy']);
 
     // Arrival
-    Route::get('/arrival/{arrival_id}/show', ['as' => 'arrival/show', 'uses' => 'FormDataController@show']);
-    Route::post('/arrival/{arrival_id}/update', ['as' => 'arrival/update', 'uses' => 'FormDataController@update']);
+    Route::get('/form_data/{form_data_id}/arrival/show', ['as' => 'form_data/arrival/show', 'uses' => 'FormDataController@show_arrival']);
+    Route::post('/form_data/{form_data_id}/arrival/update', ['as' => 'form_data/arrival/update', 'uses' => 'FormDataController@update_arrival']);
+
+    // Departure
+    Route::get('/form_data/{form_data_id}/departure/show', ['as' => 'form_data/departure/show', 'uses' => 'FormDataController@show_departure']);
+    Route::post('/form_data/{form_data_id}/departure/update', ['as' => 'form_data/departure/update', 'uses' => 'FormDataController@update_departure']);
+
+    // Passport
+    Route::get('/form_data/{form_data_id}/passport/show', ['as' => 'form_data/passport/show', 'uses' => 'FormDataController@show_passport']);
+    Route::post('/form_data/{form_data_id}/passport/update', ['as' => 'form_data/passport/update', 'uses' => 'FormDataController@update_passport']);
+
+    // Hotel
+    Route::get('/form_data/{form_data_id}/hotel/show', ['as' => 'form_data/hotel/show', 'uses' => 'FormDataController@show_hotel']);
+    Route::post('/form_data/{form_data_id}/hotel/update', ['as' => 'form_data/hotel/update', 'uses' => 'FormDataController@update_hotel']);
 });
