@@ -154,19 +154,26 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::post('/form_data/{form_data_id}/update', ['as' => 'form_data/update', 'uses' => 'FormDataController@update']);
     Route::get('/form_data/{form_data_id}/delete', ['as' => 'form_data/delete', 'uses' => 'FormDataController@destroy']);
 
-    // Arrival
+// Arrival
     Route::get('/form_data/{form_data_id}/arrival/show', ['as' => 'form_data/arrival/show', 'uses' => 'FormDataController@show_arrival']);
     Route::post('/form_data/{form_data_id}/arrival/update', ['as' => 'form_data/arrival/update', 'uses' => 'FormDataController@update_arrival']);
 
-    // Departure
+// Departure
     Route::get('/form_data/{form_data_id}/departure/show', ['as' => 'form_data/departure/show', 'uses' => 'FormDataController@show_departure']);
     Route::post('/form_data/{form_data_id}/departure/update', ['as' => 'form_data/departure/update', 'uses' => 'FormDataController@update_departure']);
 
-    // Passport
+// Passport
     Route::get('/form_data/{form_data_id}/passport/show', ['as' => 'form_data/passport/show', 'uses' => 'FormDataController@show_passport']);
     Route::post('/form_data/{form_data_id}/passport/update', ['as' => 'form_data/passport/update', 'uses' => 'FormDataController@update_passport']);
 
-    // Hotel
+// Hotel
     Route::get('/form_data/{form_data_id}/hotel/show', ['as' => 'form_data/hotel/show', 'uses' => 'FormDataController@show_hotel']);
     Route::post('/form_data/{form_data_id}/hotel/update', ['as' => 'form_data/hotel/update', 'uses' => 'FormDataController@update_hotel']);
+
+// Reservation Hotel
+    Route::get('/reservation_hotels', ['as' => 'reservation_hotels', 'uses' => 'ReservationHotelController@index']);
+    Route::post('/reservation_hotel/store', ['as' => 'reservation_hotel/store', 'uses' => 'ReservationHotelController@store']);
+    Route::get('/reservation_hotel/{reservation_hotel_id}/show', ['as' => 'reservation_hotel/show', 'uses' => 'ReservationHotelController@show']);
+    Route::post('/reservation_hotel/{reservation_hotel_id}/update', ['as' => 'reservation_hotel/update', 'uses' => 'ReservationHotelController@update']);
+    Route::get('/reservation_hotel/{reservation_hotel_id}/delete', ['as' => 'reservation_hotel/delete', 'uses' => 'ReservationHotelController@destroy']);
 });

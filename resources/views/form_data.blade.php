@@ -83,11 +83,11 @@
                 <a href="{{ $form_data->passport_img }}" target="_blank">{{ basename($form_data->passport_img ) }}</a>
             </div>
             <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{ $form_data->hotel }}" required>
+                <input class="form-check-input radiobutton1" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="mostra" {{ $form_data->hotel == 'mostra' ? "checked" : "" }} required>
                 <label class="form-check-label" for="flexRadioDefault1">Hotel Necessary</label>
             </div>
             <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="{{ $form_data->hotel }}" required>
+                <input class="form-check-input radiobutton2" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="nascondi" {{ $form_data->hotel == 'nascondi' ? "checked" : "" }} required>
                 <label class="form-check-label" for="flexRadioDefault2">Hotel Not Necessary</label>
             </div>
         </div>
@@ -96,12 +96,12 @@
                 <label for="special_request" class="control-label">Special Request</label>
                 <textarea name="special_request" id="special_request" cols="57" required>{{ $form_data->special_request }}</textarea>
             </div>
-            <div class="col-md-6 form-group" id="content">
+            <div class="col-md-6 form-group {{ $form_data->hotel == 'nascondi' ? "hidden" : "" }}" id="content2">
                 <label for="tipology_room" class="control-label">Tipology Room</label>
                 <select class="form-control" name="tipology_room" id="tipology_room">
                     <option value="">Select Typology</option>
                     <option value="1" {{ $form_data->tipology_room == 1 ? "selected" : "" }}>Singola</option>
-                    <option value="0" {{ $form_data->tipology_room == 0 ? "selected" : "" }}>Doppia</option>
+                    <option value="2" {{ $form_data->tipology_room == 2 ? "selected" : "" }}>Doppia</option>
                 </select>
             </div>
         </div>
@@ -123,3 +123,18 @@
         <button type="submit" class="btn btn-primary">Edit changes</button>
     </div>
 </form>
+
+<script>
+    $(document).ready(function() {
+        $('.radiobutton1').click(function() {
+            if ($(this).is(':checked')) {
+                $("div#content2").removeClass('hidden');
+            }
+        });
+        $('.radiobutton2').click(function() {
+            if ($(this).is(':checked')) {
+                $("div#content2").addClass('hidden');
+            }
+        });
+    });
+</script>

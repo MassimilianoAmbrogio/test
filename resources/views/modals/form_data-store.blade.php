@@ -85,11 +85,11 @@
                             <input type="file" class="form-control" name="passport_img" id="passport_img" accept="application/img" required>
                         </div>
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0" required>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="mostra" required>
                             <label class="form-check-label" for="flexRadioDefault1">Hotel Necessary</label>
                         </div>
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" required>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="nascondi" required>
                             <label class="form-check-label" for="flexRadioDefault2">Hotel Not Necessary</label>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                             <select class="form-control" name="tipology_room" id="tipology_room">
                                 <option value="">Select Typology</option>
                                 <option value="1">Singola</option>
-                                <option value="0">Doppia</option>
+                                <option value="2">Doppia</option>
                             </select>
                         </div>
                     </div>

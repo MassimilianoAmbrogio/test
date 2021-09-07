@@ -33,8 +33,6 @@ class FormDataController extends Controller
 
             $form_data = FormData::create($data);
 
-
-
             if ($request->file('passport_img')){
                 $file = $request->file('passport_img');
                 $filename = $file->getClientOriginalName();
@@ -99,7 +97,7 @@ class FormDataController extends Controller
     {
         $form_data = FormData::find($form_data_id);
         if (empty($form_data)) {
-            return redirect()->route('form_datas')->with('error', 'Driver non esiste');
+            return redirect()->route('form_datas')->with('error', 'FormData non esiste');
         }
 
         try {
@@ -225,6 +223,8 @@ class FormDataController extends Controller
 
         try {
             $form_data = FormData::find($form_data_id);
+
+            $data['hotel'] = $request->input('flexRadioDefault');
 
             $form_data->update($data);
 

@@ -10,7 +10,7 @@ $(document).ready(function() {
         if ($('#flexRadioDefault2').is(':checked')) {
             $("div#content").hide();
         }
-    });
+    })
 });
 
 function open_edit_modal(resourceId, modalClass, modalId) {
