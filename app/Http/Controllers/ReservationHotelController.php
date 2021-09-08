@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ReservationHotel;
 use App\Http\Requests\ReservationHotelStoreRequest;
 use App\Http\Requests\ReservationHotelUpdateRequest;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -25,10 +26,18 @@ class ReservationHotelController extends Controller
 
     public function store(ReservationHotelStoreRequest $request)
     {
-        $data = $request->only( 'arrival_date', 'nights', 'num_pax', 'has_lunch', 'room_type', 'price');
+        $data = $request->only( 'arrival_date', 'num_pax', 'room_type', 'price');
 
         try {
-            $data['departure_date'] = $request->input('departure_date');
+            $departure_date = $request->input('departure_date');
+            $data['has_lunch'] = $request->input('has_lunch');
+
+            $arrival_date = Carbon::parse($data['arrival_date'],'Europe/Rome');
+            $data['nights'] = $arrival_date->diffInDays($departure_date);
+
+            if($data['has_lunch'] == "") {
+
+            }
 
             ReservationHotel::create($data);
         } catch (\Exception $e) {
@@ -52,7 +61,7 @@ class ReservationHotelController extends Controller
 
     public function update(ReservationHotelUpdateRequest $request, $reservation_hotels_id)
     {
-        $data = $request->only('arrival_date', 'nights', 'num_pax', 'has_lunch', 'room_type', 'price');
+        $data = $request->only('arrival_date', 'num_pax', 'room_type', 'price');
 
         try {
             ReservationHotel::find($reservation_hotels_id)->update($data);

@@ -25,22 +25,28 @@
                             <input type="number" class="form-control" name="num_pax" id="num_pax" placeholder="Num Pax" min="1" required>
                         </div>
                         <div class="col-md-6 form-check" style="margin-top: 32px;">
-                            <input class="form-check-input" type="checkbox" id="has_lunch" value="1">
-                            <label class="form-check-label" for="has_lunch">Lunch</label>
+                            <label class="form-check-label cont-check" for="has_lunch">Lunch
+                                <input class="form-check-input" type="checkbox" name="has_lunch" id="has_lunch" value="1">
+                                <span class="checkmark1"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="room_type" id="room_type1" value="singola" required>
-                            <label class="form-check-label" for="room_type1">Singola</label>
+                            <label class="form-check-label cont-radio" for="room_type1">Singola
+                                <input class="form-check-input" type="radio" name="room_type" id="room_type1" value="singola" required>
+                                <span class="checkmark2"></span>
+                            </label>
                         </div>
                         <div class="col-md-3 form-check" style="margin-top: 30px; margin-bottom: 15px;">
-                            <input class="form-check-input" type="radio" name="room_type" id="room_type2" value="doppia" required>
-                            <label class="form-check-label" for="room_type2">Doppia</label>
+                            <label class="form-check-label cont-radio" for="room_type2">Doppia
+                                <input class="form-check-input" type="radio" name="room_type" id="room_type2" value="doppia" required>
+                                <span class="checkmark2"></span>
+                            </label>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="price" class="control-label">Price</label>
-                            <input type="number" class="form-control" name="price" id="price" placeholder="Price" min="1" required>
+                            <input type="number" class="form-control" name="price" id="price" placeholder="Price" min="1" required readonly>
                         </div>
                     </div>
                 </div>

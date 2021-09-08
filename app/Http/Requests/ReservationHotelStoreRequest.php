@@ -25,7 +25,7 @@ class ReservationHotelStoreRequest extends FormRequest
     {
         return [
             'arrival_date' => 'required',
-            'nights' => 'required',
+            'departure_date' => 'required',
             'num_pax' => 'required',
             'room_type' => 'required',
             'price' => 'required',
@@ -36,7 +36,7 @@ class ReservationHotelStoreRequest extends FormRequest
     {
         return [
             'arrival_date.required' => 'L\' Arrival Date è obbligatoria',
-            'nights.required' => 'Il Num Nights è obbligatorio',
+            'departure_date.required' => 'La Departure Date è obbligatoria',
             'num_pax.required' => 'Il Num Pax è obbligatorio',
             'room_type.required' => 'La Room Type è obbligatoria',
             'price.required' => 'Il Price è obbligatorio',
