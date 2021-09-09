@@ -15,7 +15,7 @@ class ReservationHotelController extends Controller
     {
         $reservation_hotels = ReservationHotel::all();
         return view('reservation_hotels', [
-            'reservation_hotels' => $reservation_hotels,
+            'ronaldo' => $reservation_hotels,
         ]);
     }
 
@@ -36,7 +36,7 @@ class ReservationHotelController extends Controller
             $data['nights'] = $arrival_date->diffInDays($departure_date);
 
             if($data['has_lunch'] == "") {
-
+                $data['has_lunch'] = 5;
             }
 
             ReservationHotel::create($data);
@@ -46,9 +46,9 @@ class ReservationHotelController extends Controller
         return redirect()->route('reservation_hotels')->with('success', 'Operazione completata con successo');
     }
 
-    public function show($reservation_hotels_id)
+    public function show($reservation_hotel_id)
     {
-        $reservation_hotel = ReservationHotel::find($reservation_hotels_id);
+        $reservation_hotel = ReservationHotel::find($reservation_hotel_id);
         return view("reservation_hotel", [
             "reservation_hotel" => $reservation_hotel,
         ]);
@@ -59,12 +59,14 @@ class ReservationHotelController extends Controller
         //
     }
 
-    public function update(ReservationHotelUpdateRequest $request, $reservation_hotels_id)
+    public function update(ReservationHotelUpdateRequest $request, $reservation_hotel_id)
     {
         $data = $request->only('arrival_date', 'num_pax', 'room_type', 'price');
 
         try {
-            ReservationHotel::find($reservation_hotels_id)->update($data);
+            $reservation_hotel = ReservationHotel::find($reservation_hotel_id);
+
+            $reservation_hotel->update($data);
         } catch (\Exception $e) {
             return redirect()->route('reservation_hotels')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }
@@ -72,9 +74,9 @@ class ReservationHotelController extends Controller
         return redirect()->route('reservation_hotels')->with('success', 'Operazione completata con successo');
     }
 
-    public function destroy($reservation_hotels_id)
+    public function destroy($reservation_hotel_id)
     {
-        $reservation_hotel = ReservationHotel::find($reservation_hotels_id);
+        $reservation_hotel = ReservationHotel::find($reservation_hotel_id);
         if (empty($reservation_hotel)) {
             return redirect()->route('reservation_hotels')->with('error', 'Reservation Hotel non esiste');
         }

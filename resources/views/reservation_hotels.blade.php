@@ -22,21 +22,21 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($reservation_hotels as $reservation_hotel)
-                @php $edit_reservation_hotel = route("reservation_hotel/show", ["reservation_hotel_id" => $reservation_hotel->id]) @endphp
-                @php $delete_reservation_hotel = route("reservation_hotel/delete", ["reservation_hotel_id" => $reservation_hotel->id]) @endphp
+            @foreach($ronaldo as $pippo)
+                @php $edit_reservation_hotel = route("reservation_hotel/show", ["reservation_hotel_id" => $pippo->id]) @endphp
+                @php $delete_reservation_hotel = route("reservation_hotel/delete", ["reservation_hotel_id" => $pippo->id]) @endphp
                 <tr>
-                    <td scope="col">{{ \Carbon\Carbon::parse($reservation_hotel->arrival_date)->format('d/m/Y') }}</td>
-                    <td scope="col">{{ $reservation_hotel->nights }}</td>
-                    <td scope="col">{{ $reservation_hotel->num_pax }}</td>
-                    <td scope="col">{{ $reservation_hotel->has_lunch }}</td>
-                    <td scope="col">{{ $reservation_hotel->room_type }}</td>
-                    <td scope="col">{{ $reservation_hotel->price }}</td>
+                    <td scope="col">{{ \Carbon\Carbon::parse($pippo->arrival_date)->format('d/m/Y') }}</td>
+                    <td scope="col">{{ $pippo->nights }}</td>
+                    <td scope="col">{{ $pippo->num_pax }}</td>
+                    <td scope="col">{{ $pippo->has_lunch }}</td>
+                    <td scope="col">{{ $pippo->room_type }}</td>
+                    <td scope="col">{{ $pippo->price }}</td>
                     <td class="text-right">
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_reservation_hotel }}"
-                           class="btn btn-warning editReservationHotel{{ $reservation_hotel->id }}"
-                           onclick="open_edit_modal({{ $reservation_hotel->id }},'editReservationHotel','updateModal')">Modifica</a>
+                           class="btn btn-warning editReservationHotel{{ $pippo->id }}"
+                           onclick="open_edit_modal({{ $pippo->id }},'editReservationHotel','updateModal')">Modifica</a>
 
                         <a href="{{ $delete_reservation_hotel }}" class="btn btn-danger">Elimina</a>
                     </td>

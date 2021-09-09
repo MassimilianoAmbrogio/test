@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-6 form-check" style="margin-top: 32px;">
                             <label class="form-check-label cont-check" for="has_lunch">Lunch
-                                <input class="form-check-input" type="checkbox" name="has_lunch" id="has_lunch" value="1">
+                                <input class="form-check-input" type="checkbox" name="has_lunch" id="has_lunch" value="9">
                                 <span class="checkmark1"></span>
                             </label>
                         </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="price" class="control-label">Price</label>
-                            <input type="number" class="form-control" name="price" id="price" placeholder="Price" min="1" required readonly>
+                            <input type="number" class="form-control" name="price" id="price" placeholder="Price" required readonly>
                         </div>
                     </div>
                 </div>
