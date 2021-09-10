@@ -37,6 +37,8 @@ class ReservationHotelController extends Controller
 
             if($data['has_lunch'] == "") {
                 $data['has_lunch'] = 5;
+            } else {
+                $data['has_lunch'] = 9;
             }
 
             ReservationHotel::create($data);
@@ -64,6 +66,14 @@ class ReservationHotelController extends Controller
         $data = $request->only('arrival_date', 'num_pax', 'room_type', 'price');
 
         try {
+            $data['has_lunch'] = $request->input('has_lunch');
+
+            if($data['has_lunch'] == "") {
+                $data['has_lunch'] = 5;
+            } else {
+                $data['has_lunch'] = 9;
+            }
+
             $reservation_hotel = ReservationHotel::find($reservation_hotel_id);
 
             $reservation_hotel->update($data);

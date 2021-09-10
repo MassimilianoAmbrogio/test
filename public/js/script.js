@@ -19,7 +19,6 @@ $(document).ready(function() {
     });
 });
 
-
 function open_edit_modal(resourceId, modalClass, modalId) {
     var dataUrl = $("." + modalClass + resourceId).attr('data-href');
     console.log($('#' + modalId + '.modal-content'));

@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-6 form-check" style="margin-top: 32px;">
                 <label class="form-check-label" for="has_lunch">Lunch
-                    <input class="form-check-input" type="checkbox" name="has_lunch" id="has_lunch" value="9" {{ $reservation_hotel->has_lunch == '9' ? "checked" : "" }}>
+                    <input class="form-check-input" type="checkbox" name="has_lunch" id="has_lunch" {{ $reservation_hotel->has_lunch == '5' ? "" : "checked" }}>
                 </label>
             </div>
         </div>

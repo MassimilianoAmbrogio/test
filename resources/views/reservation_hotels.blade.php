@@ -22,16 +22,24 @@
             </tr>
             </thead>
             <tbody>
+            @php
+              $tot_num_pax = 0;
+              $tot_price = 0;
+            @endphp
             @foreach($ronaldo as $pippo)
+                @php
+                    $tot_num_pax = $tot_num_pax + $pippo->num_pax;
+                    $tot_price = $tot_price + $pippo->price;
+                @endphp
                 @php $edit_reservation_hotel = route("reservation_hotel/show", ["reservation_hotel_id" => $pippo->id]) @endphp
                 @php $delete_reservation_hotel = route("reservation_hotel/delete", ["reservation_hotel_id" => $pippo->id]) @endphp
                 <tr>
                     <td scope="col">{{ \Carbon\Carbon::parse($pippo->arrival_date)->format('d/m/Y') }}</td>
                     <td scope="col">{{ $pippo->nights }}</td>
                     <td scope="col">{{ $pippo->num_pax }}</td>
-                    <td scope="col">{{ $pippo->has_lunch }}</td>
+                    <td scope="col">{{ $pippo->has_lunch == 5 ? "No" : "Si" }}</td>
                     <td scope="col">{{ $pippo->room_type }}</td>
-                    <td scope="col">{{ $pippo->price }}</td>
+                    <td scope="col">{{ $pippo->price . '€' }}</td>
                     <td class="text-right">
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_reservation_hotel }}"
@@ -42,6 +50,14 @@
                     </td>
                 </tr>
             @endforeach
+                <tr>
+                    <td colspan="2" style="background-color: #66ff00;">Totale:</td>
+                    <!-- Total num_pax -->
+                    <td colspan="1" style="background-color: #66ff00; color: yellow;">{{ $tot_num_pax }}</td>
+                    <td colspan="2" style="background-color: #66ff00;"></td>
+                    <!-- Total price -->
+                    <td colspan="2" style="background-color: #66ff00; color: yellow;">{{ $tot_price . '€' }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
