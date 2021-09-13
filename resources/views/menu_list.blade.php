@@ -20,5 +20,6 @@
     <a href="http://127.0.0.1:8000/arrivals_departures" class="list-group-item list-group-item-action">Arrivals Departures</a>
     <a href="http://127.0.0.1:8000/form_datas" class="list-group-item list-group-item-action">Form Data</a>
     <a href="http://127.0.0.1:8000/reservation_hotels" class="list-group-item list-group-item-action">Reservation Hotel</a>
+    <a href="http://127.0.0.1:8000/volunteers" class="list-group-item list-group-item-action">Volunteer</a>
     <a href="http://127.0.0.1:8000/login/show" class="list-group-item list-group-item-action">Logout</a>
 </div>

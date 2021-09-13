@@ -176,4 +176,10 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('/reservation_hotel/{reservation_hotel_id}/show', ['as' => 'reservation_hotel/show', 'uses' => 'ReservationHotelController@show']);
     Route::post('/reservation_hotel/{reservation_hotel_id}/update', ['as' => 'reservation_hotel/update', 'uses' => 'ReservationHotelController@update']);
     Route::get('/reservation_hotel/{reservation_hotel_id}/delete', ['as' => 'reservation_hotel/delete', 'uses' => 'ReservationHotelController@destroy']);
+
+// Volunteers
+    Route::get('/volunteers', ['as' => 'volunteers', 'uses' => 'VolunteerController@index']);
+    Route::post('/volunteer/store', ['as' => 'volunteer/store', 'uses' => 'VolunteerController@store']);
+    Route::get('/volunteer/{volunteer_id}/show', ['as' => 'volunteer/show', 'uses' => 'VolunteerController@show']);
+    Route::post('/volunteer/{volunteer_id}/update', ['as' => 'volunteer/update', 'uses' => 'VolunteerController@update']);
 });
