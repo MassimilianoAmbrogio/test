@@ -182,4 +182,12 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::post('/volunteer/store', ['as' => 'volunteer/store', 'uses' => 'VolunteerController@store']);
     Route::get('/volunteer/{volunteer_id}/show', ['as' => 'volunteer/show', 'uses' => 'VolunteerController@show']);
     Route::post('/volunteer/{volunteer_id}/update', ['as' => 'volunteer/update', 'uses' => 'VolunteerController@update']);
+
+// Document Volunteers
+    Route::get('/volunteer/{volunteer_id}/document/show', ['as' => 'volunteer/document/show', 'uses' => 'VolunteerController@show_document']);
+    Route::post('/volunteer/{volunteer_id}/document/update', ['as' => 'volunteer/document/update', 'uses' => 'VolunteerController@update_document']);
+
+// Feature Volunteers
+    Route::get('/volunteer/{volunteer_id}/feature/show', ['as' => 'volunteer/feature/show', 'uses' => 'VolunteerController@show_feature']);
+    Route::post('/volunteer/{volunteer_id}/feature/update', ['as' => 'volunteer/feature/update', 'uses' => 'VolunteerController@update_feature']);
 });

@@ -1,10 +1,10 @@
-<form action="{{ route("volunteer/update", ["volunteer_id" => $volunteer->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route("volunteer/document/update", ["volunteer_id" => $volunteer->id]) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modifica Volunteer</h4>
+        <h4 class="modal-title" id="myModalLabel">Modifica Document Volunteer</h4>
     </div>
-    <!-- First Name, Last Name, Date Of Birth, Gender pre-imposted -->
+    <!-- First Name, Last Name, Document Tipology, Document Type pre-imposted -->
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
@@ -18,16 +18,17 @@
         </div>
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="date_of_birth" class="control-label">Date of Birth</label>
-                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Date of Birth" value="{{ \Carbon\Carbon::parse($volunteer->date_of_birth)->diffInYears() }}">
+                <label for="document_tipology" class="control-label">Document Tipology</label>
+                <select class="form-control" name="document_tipology" id="document_tipology">
+                    <option value="">Select Document Tipology</option>
+                    <option value="1" {{ $volunteer->document_tipology == 1 ? "selected" : "" }}>Passport</option>
+                    <option value="2" {{ $volunteer->document_tipology == 2 ? "selected" : "" }}>Card Identity</option>
+                </select>
             </div>
             <div class="col-md-6 form-group">
-                <label for="gender" class="control-label">Gender</label>
-                <select class="form-control" name="gender" id="gender">
-                    <option value="">Select Gender</option>
-                    <option value="1" {{ $volunteer->gender == 1 ? "selected" : "" }}>M</option>
-                    <option value="2" {{ $volunteer->gender == 2 ? "selected" : "" }}>F</option>
-                </select>
+                <label for="document_type" class="control-label">Document Type</label>
+                <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf" required>
+                <a href="{{ $volunteer->document_type }}" target="_blank">{{ basename($volunteer->document_type) }}</a>
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
-<form action="{{ route("volunteer/update", ["volunteer_id" => $volunteer->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route("volunteer/feature/update", ["volunteer_id" => $volunteer->id]) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modifica Volunteer</h4>
+        <h4 class="modal-title" id="myModalLabel">Modifica Feature Volunteer</h4>
     </div>
-    <!-- First Name, Last Name, Date Of Birth, Gender pre-imposted -->
+    <!-- First Name, Last Name, Feature Tipology, Training pre-imposted -->
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
@@ -18,16 +18,17 @@
         </div>
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="date_of_birth" class="control-label">Date of Birth</label>
-                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Date of Birth" value="{{ \Carbon\Carbon::parse($volunteer->date_of_birth)->diffInYears() }}">
-            </div>
-            <div class="col-md-6 form-group">
-                <label for="gender" class="control-label">Gender</label>
-                <select class="form-control" name="gender" id="gender">
-                    <option value="">Select Gender</option>
-                    <option value="1" {{ $volunteer->gender == 1 ? "selected" : "" }}>M</option>
-                    <option value="2" {{ $volunteer->gender == 2 ? "selected" : "" }}>F</option>
+                <label for="feature_tipology" class="control-label">Feature Tipology</label>
+                <select class="form-control" name="feature_tipology" id="feature_tipology">
+                    <option value="">Select Feature Tipology</option>
+                    <option value="1" {{ $volunteer->feature_tipology == 1 ? "selected" : "" }}>Arrival Area</option>
+                    <option value="2" {{ $volunteer->feature_tipology == 2 ? "selected" : "" }}>Hotel Area</option>
+                    <option value="3" {{ $volunteer->feature_tipology == 3 ? "selected" : "" }}>Competition Area</option>
                 </select>
+            </div>
+            <div class="col-md-6 form-group" style="margin-top: 34px;">
+                <label class="form-check-label" for="training">Training</label>
+                <input class="form-check-input" type="checkbox" name="training" id="training" {{ $volunteer->training == "checked" ? : "" }}>
             </div>
         </div>
     </div>

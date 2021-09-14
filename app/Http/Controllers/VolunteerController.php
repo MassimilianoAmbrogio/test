@@ -35,11 +35,17 @@ class VolunteerController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only( 'user_id', 'first_name', 'last_name', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
+        $data = $request->only( 'first_name', 'last_name', 'email', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
 
         try {
-            if ( ! empty($volunteer->user->email)) {
-                return redirect()->route('volunteers')->with('error', 'Email esiste già');
+
+            if ($data['email'] == "") {
+                return redirect()->route('volunteers')->with('error', 'Campo mail vuoto');
+            }
+
+            $user = User::where('email', $data["email"])->first();
+            if (empty($user)) {
+                return redirect()->route('volunteers')->with('error', 'Email non esiste');
             }
 
             Volunteer::create($data);

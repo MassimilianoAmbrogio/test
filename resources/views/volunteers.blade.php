@@ -26,14 +26,17 @@
             <tbody>
             @foreach($volunteers as $volunteer)
                 @php $edit_volunteer = route("volunteer/show", ["volunteer_id" => $volunteer->id]) @endphp
+                @php $edit_volunteer_document = route("volunteer/document/show", ["volunteer_id" => $volunteer->id]) @endphp
+                @php $edit_volunteer_feature = route("volunteer/feature/show", ["volunteer_id" => $volunteer->id]) @endphp
+
                 <tr>
-                    <td scope="col" rowspan="2">{{ $volunteer->first_name }} {{ $volunteer->last_name }}</td>
-                    <td scope="col">{{ \Carbon\Carbon::parse($volunteer->date_of_birth)->format('d/m/Y') }}</td>
+                    <td scope="col" rowspan="3">{{ $volunteer->first_name }} {{ $volunteer->last_name }}</td>
+                    <td scope="col">{{ \Carbon\Carbon::parse($volunteer->date_of_birth)->diffInYears() }}</td>
                     <td scope="col">{{ $volunteer->gender }}</td>
                 </tr>
                 <tr>
                     <td scope="col">{{ $volunteer->document_tipology }}</td>
-                    <td scope="col">{{ $volunteer->document_type }}</td>
+                    <td scope="col">{{ basename($volunteer->document_type) }}</td>
                 </tr>
                 <tr>
                     <td scope="col">{{ $volunteer->feature_tipology }}</td>
@@ -43,8 +46,16 @@
                            data-href="{{ $edit_volunteer }}"
                            class="btn btn-warning editVolunteer{{ $volunteer->id }}"
                            onclick="open_edit_modal({{ $volunteer->id }},'editVolunteer','updateModal')">Modifica</a>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $edit_volunteer_document }}"
+                           class="btn btn-warning editVolunteerDocument{{ $volunteer->id }}"
+                           onclick="open_edit_modal({{ $volunteer->id }},'editVolunteerDocument','documentModal')">Modifica</a>
+                        <a href="javascript:void(0)"
+                           data-href="{{ $edit_volunteer_feature }}"
+                           class="btn btn-warning editVolunteerFeature{{ $volunteer->id }}"
+                           onclick="open_edit_modal({{ $volunteer->id }},'editVolunteerFeature','featureModal')">Modifica</a>
                     </td>
-                    <td scope="col" rowspan="2">{{ $volunteer->user->email }}</td>
+                    <td scope="col" rowspan="3">{{ $volunteer->user->email }}</td>
                 </tr>
             @endforeach
             </tbody>
@@ -55,6 +66,18 @@
 
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel">
         <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="documentModal" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel">
+        <div class="modal-dialog" role="document" style="width: 70%;">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="featureModalLabel">
+        <div class="modal-dialog" role="document" style="width: 70%;">
             <div class="modal-content"></div>
         </div>
     </div>
