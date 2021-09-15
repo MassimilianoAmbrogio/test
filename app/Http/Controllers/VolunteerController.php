@@ -48,10 +48,27 @@ class VolunteerController extends Controller
                 return redirect()->route('volunteers')->with('error', 'Email non esiste');
             }
 
-            Volunteer::create($data);
-            VolunteerAge::create($data);
-            VolunteerDocument::create($data);
-            VolunteerFeature::create($data);
+            $data['user_id'] = $user->id;
+            $volunteer = Volunteer::create([
+                'user_id' => $data['user_id'],
+                'first_name' => $data["first_name"],
+                'last_name' => $data["last_name"],
+            ]);
+
+            $volunteer_age = VolunteerAge::create([
+                'date_of_birth' => $data['date_of_birth'],
+                'gender' => $data['gender'],
+            ]);
+
+            $volunteer_document = VolunteerDocument::create([
+                'document_tipology' => $data['document_tipology'],
+                'document_type' => $data['document_type'],
+            ]);
+
+            $volunteer_feature = VolunteerFeature::create([
+                'feature_tipology' => $data['feature_tipology'],
+                'training' => $data['training'],
+            ]);
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }
@@ -82,10 +99,6 @@ class VolunteerController extends Controller
     public function update(Request $request, $volunteer_id)
     {
         $data = $request->only('user_id', 'first_name', 'last_name', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
-
-        if (! empty($user->email)) {
-            return redirect()->route('user')->with('error', 'Email esiste già');
-        }
 
         try {
             Volunteer::find($volunteer_id)->update($data);

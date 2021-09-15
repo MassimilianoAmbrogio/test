@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-6 form-group">
                 <label for="date_of_birth" class="control-label">Date of Birth</label>
-                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Date of Birth" value="{{ \Carbon\Carbon::parse($volunteer->date_of_birth)->diffInYears() }}">
+                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Date of Birth" value="{{ $volunteer->date_of_birth }}">
             </div>
             <div class="col-md-6 form-group">
                 <label for="gender" class="control-label">Gender</label>

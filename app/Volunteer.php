@@ -32,4 +32,13 @@ class Volunteer extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+    protected $appends = [
+        'nome_completo',
+    ];
+
+    public function getNomeCompletoAttribute()
+    {
+        return $this->first_name." ".$this->last_name;
+    }
 }

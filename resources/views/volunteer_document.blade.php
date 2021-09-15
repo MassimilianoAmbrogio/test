@@ -1,4 +1,4 @@
-<form action="{{ route("volunteer/document/update", ["volunteer_id" => $volunteer->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route("volunteer/document/update", ["volunteer_id" => $volunteer->id]) }}" method="POST">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

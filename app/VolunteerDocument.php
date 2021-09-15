@@ -15,7 +15,7 @@ class VolunteerDocument extends Model
      * @var array
      */
     protected $fillable = [
-        'document_tipology', 'document_type',
+        'volunteer_id', 'document_tipology', 'document_type',
     ];
 
     /**
@@ -23,6 +23,11 @@ class VolunteerDocument extends Model
      *
      * @var array
      */
+
+    public function volunteer()
+    {
+        return $this->belongsTo('App\Volunteer');
+    }
 
     protected $hidden = [
         'created_at', 'updated_at',

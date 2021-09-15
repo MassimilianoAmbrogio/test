@@ -15,7 +15,7 @@ class VolunteerFeature extends Model
      * @var array
      */
     protected $fillable = [
-        'feature_tipology', 'training',
+        'volunteer_id', 'feature_tipology', 'training',
     ];
 
     /**
@@ -23,6 +23,11 @@ class VolunteerFeature extends Model
      *
      * @var array
      */
+
+    public function volunteer()
+    {
+        return $this->belongsTo('App\Volunteer');
+    }
 
     protected $hidden = [
         'created_at', 'updated_at',

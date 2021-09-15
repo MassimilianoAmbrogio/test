@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class VolunteerAge extends Model
 {
@@ -15,7 +16,7 @@ class VolunteerAge extends Model
      * @var array
      */
     protected $fillable = [
-        'date_of_birth', 'gender',
+       'volunteer_id', 'date_of_birth', 'gender',
     ];
 
     /**
@@ -24,7 +25,21 @@ class VolunteerAge extends Model
      * @var array
      */
 
+    public function volunteer()
+    {
+        return $this->belongsTo('App\Volunteer');
+    }
+
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+    protected $appends = [
+        'date_parsed',
+    ];
+
+    public function getDateParsedAttribute()
+    {
+        return Carbon::parse($this->date_of_birth);
+    }
 }
