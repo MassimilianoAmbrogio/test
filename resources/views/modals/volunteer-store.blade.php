@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="document_type" class="control-label">Document Type</label>
-                            <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf" required>
+                            <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf">
                         </div>
                     </div>
                     <div class="row">

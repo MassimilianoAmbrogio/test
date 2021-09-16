@@ -29,6 +29,21 @@ class Volunteer extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function volunteer_age()
+    {
+        return $this->hasOne('App\VolunteerAge');
+    }
+
+    public function volunteer_document()
+    {
+        return $this->hasOne('App\VolunteerDocument');
+    }
+
+    public function volunteer_feature()
+    {
+        return $this->hasOne('App\VolunteerFeature');
+    }
+
     protected $hidden = [
         'created_at', 'updated_at',
     ];

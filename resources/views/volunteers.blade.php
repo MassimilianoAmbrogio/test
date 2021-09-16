@@ -13,7 +13,7 @@
         <table class="table" style="margin-top: 10px;">
             <thead>
             <tr>
-                <th scope="col">First Name / Last Name</th>
+                <th scope="col">First Name, Last Name</th>
             </tr>
             </thead>
             <tbody>
@@ -21,11 +21,12 @@
                 @php $edit_volunteer = route("volunteer/show", ["volunteer_id" => $volunteer->id]) @endphp
                 @php $edit_volunteer_document = route("volunteer/document/show", ["volunteer_id" => $volunteer->id]) @endphp
                 @php $edit_volunteer_feature = route("volunteer/feature/show", ["volunteer_id" => $volunteer->id]) @endphp
+                @php $now = \Carbon\Carbon::now() @endphp
                 <tr>
                     <td scope="col" rowspan="3" style="line-height: 150px;">{{ $volunteer->nome_completo }}</td>
-                    <td scope="col">{{ $volunteer_id->date_parsed->format('d/m/Y') }}</td>
-                    <td scope="col">{{ $volunteer->gender }}</td>
-                    <td scope="col">{{ $volunteer->date_of_birth ? "No" : "Si" }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_age ? $volunteer->volunteer_age->date_parsed->diff($now)->format('%y years') : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_age ? ($volunteer->volunteer_age->gender == 1 ? "M" : "F") : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_age ? ($volunteer->volunteer_age->date_parsed->diffInYears($now) >= 18 ? "Si" : "No") : '-' }}</td>
                     <td>
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_volunteer }}"
@@ -35,9 +36,9 @@
                     <td scope="col" rowspan="3" style="line-height: 150px;">{{ $volunteer->user->email }}</td>
                 </tr>
                 <tr>
-                    <td scope="col">{{ $volunteer->document_tipology }}</td>
-                    <td scope="col">{{ basename($volunteer->document_type) }}</td>
-                    <td scope="col">{{ $volunteer->document_type ? "No" : "Si" }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->document_tipology == 1 ? "Passport" : "Card Identity") : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_document ? $volunteer->volunteer_document->document_type : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->document_type == "" ? "No" : "Si" ) : '-' }}</td>
                     <td>
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_volunteer_document }}"
@@ -46,9 +47,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td scope="col">{{ $volunteer->feature_tipology }}</td>
-                    <td scope="col">{{ $volunteer->training}}</td>
-                    <td scope="col">{{ $volunteer->training ? "No" : "Si" }} </td>
+                    <td scope="col">{{ $volunteer->volunteer_feature ? ($volunteer->volunteer_feature->training == true ? "Si" : "No") : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_feature && $volunteer->volunteer_feature->feature_tipology > 0 ? $arr_typologies[$volunteer->volunteer_feature->feature_tipology-1] : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_feature ? ($volunteer->volunteer_feature->feature_tipology == 3 ? "Si" : "No" ) : '-' }} </td>
                     <td>
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_volunteer_feature }}"

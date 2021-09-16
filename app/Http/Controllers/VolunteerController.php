@@ -14,17 +14,16 @@ class VolunteerController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+
+        $arr_typologies = [
+            "Arrival Area",
+            "Hotel Area",
+            "Competition Area"
+        ];
         $volunteers = Volunteer::all();
-        $volunteers_ages = VolunteerAge::all();
-        $volunteers_documents = VolunteerDocument::all();
-        $volunteers_features = VolunteerFeature::all();
         return view('volunteers', [
             'volunteers' => $volunteers,
-            'volunteers_ages' => $volunteers_ages,
-            'volunteers_documents' => $volunteers_documents,
-            'volunteers_features' => $volunteers_features,
-            'users' => $users,
+            'arr_typologies' => $arr_typologies
         ]);
     }
 
@@ -48,24 +47,28 @@ class VolunteerController extends Controller
                 return redirect()->route('volunteers')->with('error', 'Email non esiste');
             }
 
-            $data['user_id'] = $user->id;
+            $pippo = $user->id;
             $volunteer = Volunteer::create([
-                'user_id' => $data['user_id'],
+                'user_id' => $pippo,
                 'first_name' => $data["first_name"],
                 'last_name' => $data["last_name"],
             ]);
 
+            $giovanni = $volunteer->id;
             $volunteer_age = VolunteerAge::create([
+                'volunteer_id' => $giovanni,
                 'date_of_birth' => $data['date_of_birth'],
                 'gender' => $data['gender'],
             ]);
 
             $volunteer_document = VolunteerDocument::create([
+                'volunteer_id' => $giovanni,
                 'document_tipology' => $data['document_tipology'],
                 'document_type' => $data['document_type'],
             ]);
 
             $volunteer_feature = VolunteerFeature::create([
+                'volunteer_id' => $giovanni,
                 'feature_tipology' => $data['feature_tipology'],
                 'training' => $data['training'],
             ]);
