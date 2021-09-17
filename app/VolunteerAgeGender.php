@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VolunteerDocument extends Model
+class VolunteerAgeGender extends Model
 {
-    protected $table = 'volunteers_documents';
+    protected $table = 'volunteers_age_genders';
 
     protected $primaryKey = 'id';
     /**
@@ -15,7 +15,7 @@ class VolunteerDocument extends Model
      * @var array
      */
     protected $fillable = [
-        'volunteer_id', 'volunteers_document_tipology_id', 'document_type',
+        'gender'
     ];
 
     /**
@@ -23,16 +23,6 @@ class VolunteerDocument extends Model
      *
      * @var array
      */
-
-    public function volunteer()
-    {
-        return $this->belongsTo('App\Volunteer');
-    }
-
-    public function volunteers_document_tipology()
-    {
-        return $this->belongsTo('App\VolunteerDocumentTipology');
-    }
 
     protected $hidden = [
         'created_at', 'updated_at',

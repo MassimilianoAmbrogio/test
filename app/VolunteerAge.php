@@ -16,7 +16,7 @@ class VolunteerAge extends Model
      * @var array
      */
     protected $fillable = [
-       'volunteer_id', 'date_of_birth', 'gender',
+       'volunteer_id', 'volunteers_age_gender_id', 'date_of_birth',
     ];
 
     /**
@@ -28,6 +28,11 @@ class VolunteerAge extends Model
     public function volunteer()
     {
         return $this->belongsTo('App\Volunteer');
+    }
+
+    public function volunteers_age_gender()
+    {
+        return $this->belongsTo('App\VolunteerAgeGender','volunteers_age_gender_id');
     }
 
     protected $hidden = [

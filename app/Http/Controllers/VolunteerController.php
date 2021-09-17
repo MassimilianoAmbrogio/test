@@ -6,6 +6,9 @@ use App\Volunteer;
 use App\VolunteerAge;
 use App\VolunteerDocument;
 use App\VolunteerFeature;
+use App\VolunteerAgeGender;
+use App\VolunteerDocumentTipology;
+use App\VolunteerFeatureTipology;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -21,9 +24,13 @@ class VolunteerController extends Controller
             "Competition Area"
         ];
         $volunteers = Volunteer::all();
+        $genders = VolunteerAgeGender::all();
+        $document_tipologys = VolunteerDocumentTipology::all();
         return view('volunteers', [
             'volunteers' => $volunteers,
-            'arr_typologies' => $arr_typologies
+            'arr_typologies' => $arr_typologies,
+            'genders' => $genders,
+            'document_tipologys' => $document_tipologys,
         ]);
     }
 
@@ -58,20 +65,25 @@ class VolunteerController extends Controller
             $volunteer_age = VolunteerAge::create([
                 'volunteer_id' => $giovanni,
                 'date_of_birth' => $data['date_of_birth'],
-                'gender' => $data['gender'],
+                'volunteers_age_gender_id' => $data['gender'],
             ]);
 
             $volunteer_document = VolunteerDocument::create([
                 'volunteer_id' => $giovanni,
-                'document_tipology' => $data['document_tipology'],
                 'document_type' => $data['document_type'],
+                'volunteers_document_tipology_id' => $data['document_tipology'],
             ]);
 
             $volunteer_feature = VolunteerFeature::create([
                 'volunteer_id' => $giovanni,
-                'feature_tipology' => $data['feature_tipology'],
                 'training' => $data['training'],
             ]);
+
+           /* $andrea = $feature_tipology->id;
+            $volunteer_feature_tipology = VolunteerFeatureTipology::create([
+                'feature_tipology_id' => $andrea,
+                'feature_tipology' => $data['feature_tipology'],
+            ]);*/
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }

@@ -32,8 +32,9 @@
                             <label for="gender" class="control-label">Gender</label>
                             <select class="form-control" name="gender" id="gender">
                                 <option value="">Select Gender</option>
-                                <option value="1">M</option>
-                                <option value="2">F</option>
+                                @foreach($genders as $gender)
+                                    <option value="{{ $gender->id }}">{{ $gender->gender }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -42,8 +43,9 @@
                             <label for="document_tipology" class="control-label">Document Tipology</label>
                             <select class="form-control" name="document_tipology" id="document_tipology">
                                 <option value="">Select Document Tipology</option>
-                                <option value="1">Passport</option>
-                                <option value="2">Card Identity</option>
+                                @foreach($document_tipologys as $document_tipology)
+                                    <option value="{{ $document_tipology->id }}">{{ $document_tipology->document_tipology }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 form-group">

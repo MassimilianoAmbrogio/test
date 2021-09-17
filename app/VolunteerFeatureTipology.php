@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VolunteerDocument extends Model
+class VolunteerFeatureTipology extends Model
 {
-    protected $table = 'volunteers_documents';
+    protected $table = 'volunteers_feature_tipologys';
 
     protected $primaryKey = 'id';
     /**
@@ -15,7 +15,7 @@ class VolunteerDocument extends Model
      * @var array
      */
     protected $fillable = [
-        'volunteer_id', 'volunteers_document_tipology_id', 'document_type',
+        'feature_tipology_id', 'feature_tipology',
     ];
 
     /**
@@ -24,14 +24,9 @@ class VolunteerDocument extends Model
      * @var array
      */
 
-    public function volunteer()
+    public function feature_volunteer()
     {
-        return $this->belongsTo('App\Volunteer');
-    }
-
-    public function volunteers_document_tipology()
-    {
-        return $this->belongsTo('App\VolunteerDocumentTipology');
+        return $this->belongsTo('App\VolunteerFeature');
     }
 
     protected $hidden = [
