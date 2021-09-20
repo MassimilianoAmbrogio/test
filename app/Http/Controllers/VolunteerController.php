@@ -17,20 +17,15 @@ class VolunteerController extends Controller
 {
     public function index()
     {
-
-        $arr_typologies = [
-            "Arrival Area",
-            "Hotel Area",
-            "Competition Area"
-        ];
         $volunteers = Volunteer::all();
         $genders = VolunteerAgeGender::all();
         $document_tipologys = VolunteerDocumentTipology::all();
+        $feature_tipologys = VolunteerFeatureTipology::all();
         return view('volunteers', [
             'volunteers' => $volunteers,
-            'arr_typologies' => $arr_typologies,
             'genders' => $genders,
             'document_tipologys' => $document_tipologys,
+            'feature_tipologys' => $feature_tipologys,
         ]);
     }
 
@@ -77,13 +72,9 @@ class VolunteerController extends Controller
             $volunteer_feature = VolunteerFeature::create([
                 'volunteer_id' => $giovanni,
                 'training' => $data['training'],
+                'volunteers_feature_tipology_id' => $data['feature_tipology'],
             ]);
 
-           /* $andrea = $feature_tipology->id;
-            $volunteer_feature_tipology = VolunteerFeatureTipology::create([
-                'feature_tipology_id' => $andrea,
-                'feature_tipology' => $data['feature_tipology'],
-            ]);*/
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }
@@ -94,14 +85,14 @@ class VolunteerController extends Controller
     {
         $user = User::all();
         $volunteer = Volunteer::find($volunteer_id);
-        $volunteer_age = VolunteerAge::find($volunteer_id);
-        $volunteer_document = VolunteerDocument::find($volunteer_id);
-        $volunteer_feature = VolunteerFeature::find($volunteer_id);
+        $gender = VolunteerAgeGender::find($volunteer_id);
+        $document_tipology = VolunteerDocumentTipology::find($volunteer_id);
+        $feature_tipology = VolunteerFeatureTipology::find($volunteer_id);
         return view("volunteer", [
             "volunteer" => $volunteer,
-            "volunteer_age" => $volunteer_age,
-            "volunteer_document" => $volunteer_document,
-            "volunteer_feature" => $volunteer_feature,
+            "gender" => $gender,
+            "document_tipology" => $document_tipology,
+            "feature_tipology" => $feature_tipology,
             'user' => $user,
         ]);
     }
@@ -111,15 +102,16 @@ class VolunteerController extends Controller
         //
     }
 
-    public function update(Request $request, $volunteer_id)
+    public function update(Request $request)
     {
-        $data = $request->only('user_id', 'first_name', 'last_name', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
+        $data = $request->only( 'first_name', 'last_name', 'email', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
 
         try {
-            Volunteer::find($volunteer_id)->update($data);
-            VolunteerAge::find($volunteer_id)->update($data);
-            VolunteerDocument::find($volunteer_id)->update($data);
-            VolunteerFeature::find($volunteer_id)->update($data);
+
+            $volunteer = Volunteer::update($data);
+            $volunteer_age = VolunteerAge::update($data);
+            $volunteer_document = VolunteerDocument::update($data);
+            $volunteer_feature = VolunteerFeature::update($data);
 
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());

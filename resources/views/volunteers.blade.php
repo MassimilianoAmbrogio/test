@@ -25,7 +25,7 @@
                 <tr>
                     <td scope="col" rowspan="3" style="line-height: 150px;">{{ $volunteer->nome_completo }}</td>
                     <td scope="col">{{ $volunteer->volunteer_age ? $volunteer->volunteer_age->date_parsed->diff($now)->format('%y years') : '-' }}</td>
-                    <td scope="col">{{ $volunteer->volunteer_age ? ($volunteer->volunteers_age->volunteers_age_gender_id > 0 ? $volunteer->volunteers_age->volunteers_age_gender->gender : "-") : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_age ? ($volunteer->volunteer_age->volunteers_age_gender_id > 0 ? $volunteer->volunteer_age->volunteers_age_gender->gender : '-') : '-' }}</td>
                     <td scope="col">{{ $volunteer->volunteer_age ? ($volunteer->volunteer_age->date_parsed->diffInYears($now) >= 18 ? "Si" : "No") : '-' }}</td>
                     <td>
                         <a href="javascript:void(0)"
@@ -36,7 +36,7 @@
                     <td scope="col" rowspan="3" style="line-height: 150px;">{{ $volunteer->user->email }}</td>
                 </tr>
                 <tr>
-                    <td scope="col">{{ $volunteer->volunteer_document_tipology ? ($volunteer->volunteer_document_tipology->document_tipology == 1 ? "Passport" : "Card Identity") : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->volunteers_document_tipology_id > 0 ? $volunteer->volunteer_document->volunteers_document_tipology->document_tipology : '-') : '-' }}</td>
                     <td scope="col">{{ $volunteer->volunteer_document ? $volunteer->volunteer_document->document_type : '-' }}</td>
                     <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->document_type == "" ? "No" : "Si" ) : '-' }}</td>
                     <td>
@@ -48,8 +48,8 @@
                 </tr>
                 <tr>
                     <td scope="col">{{ $volunteer->volunteer_feature ? ($volunteer->volunteer_feature->training == true ? "Si" : "No") : '-' }}</td>
-                    <td scope="col">{{ $volunteer->volunteer_feature_tipology && $volunteer->volunteer_feature_tipology->feature_tipology > 0 ? $arr_typologies[$volunteer->volunteer_feature_tipology->feature_tipology-1] : '-' }}</td>
-                    <td scope="col">{{ $volunteer->volunteer_feature_tipology ? ($volunteer->volunteer_feature_tipology->feature_tipology == 3 ? "Si" : "No" ) : '-' }} </td>
+                    <td scope="col">{{ $volunteer->volunteer_feature ? ($volunteer->volunteer_feature->volunteers_feature_tipology_id > 0 ? $volunteer->volunteer_feature->volunteers_feature_tipology->feature_tipology : '-') : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_feature ? ($volunteer->volunteer_feature->volunteers_feature_tipology_id == 3 ? "Si" : "No") : '-' }} </td>
                     <td>
                         <a href="javascript:void(0)"
                            data-href="{{ $edit_volunteer_feature }}"

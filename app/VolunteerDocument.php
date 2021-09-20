@@ -31,7 +31,7 @@ class VolunteerDocument extends Model
 
     public function volunteers_document_tipology()
     {
-        return $this->belongsTo('App\VolunteerDocumentTipology');
+        return $this->belongsTo('App\VolunteerDocumentTipology','volunteers_document_tipology_id');
     }
 
     protected $hidden = [

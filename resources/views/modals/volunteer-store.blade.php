@@ -58,9 +58,9 @@
                             <label for="feature_tipology" class="control-label">Feature Tipology</label>
                             <select class="form-control" name="feature_tipology" id="feature_tipology">
                                 <option value="">Select Feature Tipology</option>
-                                <option value="1">Arrival Area</option>
-                                <option value="2">Hotel Area</option>
-                                <option value="3">Competition Area</option>
+                                @foreach($feature_tipologys as $feature_tipology)
+                                    <option value="{{ $feature_tipology->id }}">{{ $feature_tipology->feature_tipology }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 form-group" style="margin-top: 34px;">
