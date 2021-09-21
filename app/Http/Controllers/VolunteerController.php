@@ -10,6 +10,7 @@ use App\VolunteerAgeGender;
 use App\VolunteerDocumentTipology;
 use App\VolunteerFeatureTipology;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -75,6 +76,18 @@ class VolunteerController extends Controller
                 'volunteers_feature_tipology_id' => $data['feature_tipology'],
             ]);
 
+            if ($request->file('document_type')){
+                $file = $request->file('document_type');
+                $filename = $file->getClientOriginalName();
+                $disk = Storage::disk('public');
+                $directory = "volunteers";
+                $disk->putFileAs($directory, $file, $filename);
+                $url = $disk->url($directory."/".$filename);
+                $url = str_replace('http://localhost', 'http://127.0.0.1:8000', $url);
+                $volunteer_document->document_type = $url;
+                $volunteer_document->save();
+            }
+
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
         }
@@ -85,14 +98,12 @@ class VolunteerController extends Controller
     {
         $user = User::all();
         $volunteer = Volunteer::find($volunteer_id);
-        $gender = VolunteerAgeGender::find($volunteer_id);
-        $document_tipology = VolunteerDocumentTipology::find($volunteer_id);
-        $feature_tipology = VolunteerFeatureTipology::find($volunteer_id);
+        $genders = VolunteerAgeGender::all();
+
+
         return view("volunteer", [
             "volunteer" => $volunteer,
-            "gender" => $gender,
-            "document_tipology" => $document_tipology,
-            "feature_tipology" => $feature_tipology,
+            "genders" => $genders,
             'user' => $user,
         ]);
     }
@@ -102,16 +113,81 @@ class VolunteerController extends Controller
         //
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $volunteer_age_id)
     {
-        $data = $request->only( 'first_name', 'last_name', 'email', 'date_of_birth', 'gender', 'document_tipology', 'document_type', 'feature_tipology', 'training');
+        $data = $request->only( 'date_of_birth', 'volunteers_age_gender_id');
 
         try {
 
-            $volunteer = Volunteer::update($data);
-            $volunteer_age = VolunteerAge::update($data);
-            $volunteer_document = VolunteerDocument::update($data);
-            $volunteer_feature = VolunteerFeature::update($data);
+            $volunteer_age = VolunteerAge::find($volunteer_age_id);
+
+            $volunteer_age->update($data);
+
+        } catch (\Exception $e) {
+            return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
+        }
+
+        return redirect()->route('volunteers')->with('success', 'Operazione completata con successo');
+    }
+
+    public function show_document($volunteer_id)
+    {
+        $volunteer = Volunteer::find($volunteer_id);
+        $documents = VolunteerDocumentTipology::all();
+
+        return view("volunteer_document", [
+            "volunteer" => $volunteer,
+            "documents" => $documents,
+        ]);
+    }
+
+    public function update_document(Request $request, $volunteer_document_id)
+    {
+        $data = $request->only( 'volunteers_document_tipology_id', 'document_type');
+
+        try {
+            $volunteer_document = VolunteerDocument::find($volunteer_document_id);
+
+            $volunteer_document->update($data);
+
+            if ($request->file('document_type')){
+                $file = $request->file('document_type');
+                $filename = $file->getClientOriginalName();
+                $disk = Storage::disk('public');
+                $directory = "volunteers";
+                $disk->putFileAs($directory, $file, $filename);
+                $url = $disk->url($directory."/".$filename);
+                $url = str_replace('http://localhost', 'http://127.0.0.1:8000/storage/volunteers', $url);
+                $volunteer_document->document_type = $url;
+                $volunteer_document->save();
+            }
+
+        } catch (\Exception $e) {
+            return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());
+        }
+
+        return redirect()->route('volunteers')->with('success', 'Operazione completata con successo');
+    }
+
+    public function show_feature($volunteer_id)
+    {
+        $volunteer = Volunteer::find($volunteer_id);
+        $features = VolunteerFeatureTipology::all();
+
+        return view("volunteer_feature", [
+            "volunteer" => $volunteer,
+            "features" => $features,
+        ]);
+    }
+
+    public function update_feature(Request $request, $volunteer_feature_id)
+    {
+        $data = $request->only( 'volunteers_feature_tipology_id', 'training');
+
+        try {
+            $volunteer_feature = VolunteerFeature::find($volunteer_feature_id);
+
+            $volunteer_feature->update($data);
 
         } catch (\Exception $e) {
             return redirect()->route('volunteers')->with('error', 'Qualcosa è andato storto:' . $e->getMessage());

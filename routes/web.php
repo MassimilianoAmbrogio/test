@@ -180,14 +180,14 @@ Route::group(['middleware' => 'auth:web'],function(){
 // Volunteers
     Route::get('/volunteers', ['as' => 'volunteers', 'uses' => 'VolunteerController@index']);
     Route::post('/volunteer/store', ['as' => 'volunteer/store', 'uses' => 'VolunteerController@store']);
-    Route::get('/volunteer/{volunteer_id}/show', ['as' => 'volunteer/show', 'uses' => 'VolunteerController@show']);
-    Route::post('/volunteer/{volunteer_id}/update', ['as' => 'volunteer/update', 'uses' => 'VolunteerController@update']);
+    Route::get('/volunteer/{volunteer_age_id}/show', ['as' => 'volunteer/show', 'uses' => 'VolunteerController@show']);
+    Route::post('/volunteer/{volunteer_age_id}/update', ['as' => 'volunteer/update', 'uses' => 'VolunteerController@update']);
 
 // Document Volunteers
-    Route::get('/volunteer/{volunteer_id}/document/show', ['as' => 'volunteer/document/show', 'uses' => 'VolunteerController@show_document']);
-    Route::post('/volunteer/{volunteer_id}/document/update', ['as' => 'volunteer/document/update', 'uses' => 'VolunteerController@update_document']);
+    Route::get('/volunteer/{volunteer_document_id}/document/show', ['as' => 'volunteer/document/show', 'uses' => 'VolunteerController@show_document']);
+    Route::post('/volunteer/{volunteer_document_id}/document/update', ['as' => 'volunteer/document/update', 'uses' => 'VolunteerController@update_document']);
 
 // Feature Volunteers
-    Route::get('/volunteer/{volunteer_id}/feature/show', ['as' => 'volunteer/feature/show', 'uses' => 'VolunteerController@show_feature']);
-    Route::post('/volunteer/{volunteer_id}/feature/update', ['as' => 'volunteer/feature/update', 'uses' => 'VolunteerController@update_feature']);
+    Route::get('/volunteer/{volunteer_feature_id}/feature/show', ['as' => 'volunteer/feature/show', 'uses' => 'VolunteerController@show_feature']);
+    Route::post('/volunteer/{volunteer_feature_id}/feature/update', ['as' => 'volunteer/feature/update', 'uses' => 'VolunteerController@update_feature']);
 });

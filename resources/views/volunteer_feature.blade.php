@@ -1,4 +1,4 @@
-<form action="{{ route("volunteer/feature/update", ["volunteer_id" => $volunteer->id]) }}" method="POST">
+<form action="{{ route("volunteer/feature/update", ["volunteer_feature_id" => $volunteer->volunteer_feature->id]) }}" method="POST">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -8,17 +8,17 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="feature_tipology" class="control-label">Feature Tipology</label>
-                <select class="form-control" name="feature_tipology" id="feature_tipology">
+                <label for="volunteers_feature_tipology_id" class="control-label">Feature Tipology</label>
+                <select class="form-control" name="volunteers_feature_tipology_id" id="volunteers_feature_tipology_id">
                     <option value="">Select Feature Tipology</option>
-                    <option value="1" {{ $volunteer->volunteer_feature->feature_tipology == 1 ? "selected" : "" }}>Arrival Area</option>
-                    <option value="2" {{ $volunteer->volunteer_feature->feature_tipology == 2 ? "selected" : "" }}>Hotel Area</option>
-                    <option value="3" {{ $volunteer->volunteer_feature->feature_tipology == 3 ? "selected" : "" }}>Competition Area</option>
+                    @foreach($features as $feature)
+                        <option value="{{ $feature->id }}" {{ $feature->id == $volunteer->volunteer_feature->volunteers_feature_tipology_id ? "selected" : "" }}>{{ $feature->feature_tipology }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 form-group" style="margin-top: 34px;">
                 <label class="form-check-label" for="training">Training</label>
-                <input class="form-check-input" type="checkbox" name="training" id="training" {{ $volunteer->volunteer_feature->training == "checked" ? : "" }}>
+                <input class="form-check-input" type="checkbox" name="training" id="training" {{ $volunteer->volunteer_feature->training == "on" ? "checked" : "" }}>
             </div>
         </div>
     </div>

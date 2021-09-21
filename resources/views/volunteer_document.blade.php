@@ -1,4 +1,4 @@
-<form action="{{ route("volunteer/document/update", ["volunteer_id" => $volunteer->id]) }}" method="POST">
+<form action="{{ route("volunteer/document/update", ["volunteer_document_id" => $volunteer->volunteer_document->id]) }}" method="POST">
     {{ csrf_field() }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -8,16 +8,17 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="document_tipology" class="control-label">Document Tipology</label>
-                <select class="form-control" name="document_tipology" id="document_tipology">
+                <label for="volunteers_document_tipology_id" class="control-label">Document Tipology</label>
+                <select class="form-control" name="volunteers_document_tipology_id" id="volunteers_document_tipology_id">
                     <option value="">Select Document Tipology</option>
-                    <option value="1" {{ $volunteer->volunteer_document->document_tipology == 1 ? "selected" : "" }}>Passport</option>
-                    <option value="2" {{ $volunteer->volunteer_document->document_tipology == 2 ? "selected" : "" }}>Card Identity</option>
+                    @foreach($documents as $document)
+                        <option value="{{ $document->id }}" {{ $document->id == $volunteer->volunteer_document->volunteers_document_tipology_id ? "selected" : "" }}>{{ $document->document_tipology }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 form-group">
                 <label for="document_type" class="control-label">Document Type</label>
-                <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf" required>
+                <input type="file" class="form-control" name="document_type" id="document_type" accept="application/pdf">
                 <a href="{{ $volunteer->volunteer_document->document_type }}" target="_blank">{{ basename($volunteer->volunteer_document->document_type) }}</a>
             </div>
         </div>

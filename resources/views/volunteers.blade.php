@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->volunteers_document_tipology_id > 0 ? $volunteer->volunteer_document->volunteers_document_tipology->document_tipology : '-') : '-' }}</td>
-                    <td scope="col">{{ $volunteer->volunteer_document ? $volunteer->volunteer_document->document_type : '-' }}</td>
+                    <td scope="col">{{ $volunteer->volunteer_document ? basename($volunteer->volunteer_document->document_type) : '-' }}</td>
                     <td scope="col">{{ $volunteer->volunteer_document ? ($volunteer->volunteer_document->document_type == "" ? "No" : "Si" ) : '-' }}</td>
                     <td>
                         <a href="javascript:void(0)"
